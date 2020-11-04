@@ -1,11 +1,14 @@
-cask 'finicky' do
-  version '0.5'
-  sha256 'a2eba88c657786056d0f867c983f31c786adfe5ecde1aa3c8df94e18c536775c'
+cask "finicky" do
+  version "3.1.1"
+  sha256 "c70262918d3f358c9d7146e6a9fd729508a991202d90e400edff5fb740dcfc61"
 
   url "https://github.com/johnste/finicky/releases/download/v#{version}/Finicky.zip"
-  appcast 'https://github.com/johnste/finicky/releases.atom'
-  name 'Finicky'
-  homepage 'https://github.com/johnste/finicky'
+  appcast "https://github.com/johnste/finicky/releases.atom"
+  name "Finicky"
+  desc "Utility for customizing which browser to start"
+  homepage "https://github.com/johnste/finicky"
 
-  app 'Finicky.app'
+  depends_on macos: ">= :sierra"
+
+  app "Finicky.app"
 end

@@ -1,14 +1,23 @@
-cask 'thonny' do
-  version '2.1.22'
-  sha256 '678d415e60beb3280b5f43246c0985a8fee5cca8a382a1c2a7fb0777a2a647ef'
+cask "thonny" do
+  version "3.2.7"
+  sha256 "0dc9d7b34bbe70cc3256575cfaed055614e8967dd3a26b8ce088998529429042"
 
-  # bitbucket.org/plas/thonny/downloads was verified as official when first introduced to the cask
-  url "https://bitbucket.org/plas/thonny/downloads/thonny-#{version}.dmg"
-  appcast 'http://thonny.org/blog/categories/releases.html'
-  name 'Thonny'
-  homepage 'http://thonny.org/'
+  # github.com/thonny/thonny/ was verified as official when first introduced to the cask
+  url "https://github.com/thonny/thonny/releases/download/v#{version}/thonny-#{version}.pkg"
+  appcast "https://github.com/thonny/thonny/releases.atom"
+  name "Thonny"
+  homepage "https://thonny.org/"
 
-  app 'Thonny.app'
+  conflicts_with cask: "thonny-xxl"
 
-  zap trash: '~/.thonny'
+  pkg "thonny-#{version}.pkg"
+
+  uninstall quit:    "org.thonny.Thonny",
+            pkgutil: "org.thonny.Thonny.component",
+            delete:  "/Applications/Thonny.app"
+
+  zap trash: [
+    "~/Library/Saved Application State/org.thonny.Thonny.savedState",
+    "~/Library/Thonny",
+  ]
 end

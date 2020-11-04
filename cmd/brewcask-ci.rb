@@ -1,85 +1,107 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
+
+require "cask/cask_loader"
+require "cask/installer"
 
 require "utils/github"
 require "utils/formatter"
 
-require_relative "lib/capture"
 require_relative "lib/check"
-require_relative "lib/travis"
+require_relative "lib/ci_matrix"
 
 module Cask
   class Cmd
     class Ci < AbstractCommand
+      def self.description
+        "Test changes in a Homebrew Cask tap."
+      end
+
       def run
-        unless ENV.key?("TRAVIS")
-          raise CaskError, "This command isn’t meant to be run locally."
-        end
+        odeprecated "brew cask ci", disable_on: Time.new(2020, 12, 31)
+
+        raise CaskError, "This command isn’t meant to be run locally." unless ENV.key?("CI")
+
+        tap = Tap.from_path(Dir.pwd)
+
+        matrix = CiMatrix.generate(tap)
 
         $stdout.sync = true
         $stderr.sync = true
 
-        unless tap
-          raise CaskError, "This command must be run from inside a tap directory."
-        end
-
-        ruby_files_in_wrong_directory = modified_ruby_files - (modified_cask_files + modified_command_files)
-
-        unless ruby_files_in_wrong_directory.empty?
-          raise CaskError, "Casks are in the wrong directory:\n" +
-                           ruby_files_in_wrong_directory.join("\n")
-        end
-
-        if modified_cask_files.count > 1 && tap.name != "homebrew/cask-fonts"
-          raise CaskError, "More than one cask modified; please submit a pull request for each cask separately."
-        end
-
         overall_success = true
 
-        modified_cask_files.each do |path|
+        matrix.each do |m|
+          path = m[:cask][:path]
+
           cask = CaskLoader.load(path)
 
-          overall_success &= step "brew cask audit #{cask.token}", "audit" do
-            Auditor.audit(cask, audit_download: true,
-                                check_token_conflicts: added_cask_files.include?(path),
-                                commit_range: ENV["TRAVIS_COMMIT_RANGE"])
+          overall_success &= step "brew cask style #{cask.token}" do
+            Style.run(cask.sourcefile_path)
+            true
           end
 
-          overall_success &= step "brew cask style #{cask.token}", "style" do
-            Style.run(path)
+          overall_success &= step "brew cask audit #{cask.token}" do
+            Audit.run(*m[:audit_args], cask.sourcefile_path)
+            true
+          end
+
+          if (macos_requirement = cask.depends_on.macos) && !macos_requirement.satisfied?
+            opoo "Skipping installation: #{macos_requirement.message}"
+            next
           end
 
           was_installed = cask.installed?
-          cask_dependencies = CaskDependencies.new(cask).reject(&:installed?)
 
-          check = Check.new
+          installer = Installer.new(cask, verbose: true)
 
-          overall_success &= step "brew cask install #{cask.token}", "install" do
-            Installer.new(cask, force: true).uninstall if was_installed
+          before = nil
 
-            check.before
+          cask_and_formula_dependencies = nil
 
-            Installer.new(cask, verbose: true).install
+          overall_success &= step "brew cask install #{cask.token}" do
+            cask_and_formula_dependencies = installer.missing_cask_and_formula_dependencies
+
+            if was_installed
+              old_cask = CaskLoader.load(cask.installed_caskfile)
+              Installer.new(old_cask, verbose: true).zap
+            end
+
+            before = Check.all
+
+            installer.install
           end
 
-          overall_success &= step "brew cask uninstall #{cask.token}", "uninstall" do
+          overall_success &= step "brew cask uninstall #{cask.token}" do
             success = begin
-              Installer.new(cask, verbose: true).uninstall
+              if manual_installer?(cask)
+                puts "Cask has a manual installer, skipping..."
+              else
+                installer.uninstall
+              end
               true
             rescue => e
               $stderr.puts e.message
               $stderr.puts e.backtrace
               false
             ensure
-              cask_dependencies.each do |c|
-                Installer.new(c, verbose: true).uninstall if c.installed?
+              cask_and_formula_dependencies.reverse_each do |cask_or_formula|
+                next unless cask_or_formula.is_a?(Cask)
+
+                Installer.new(cask_or_formula, verbose: true).uninstall if cask_or_formula.installed?
               end
             end
 
-            check.after
+            after = Check.all
 
-            $stderr.puts check.message unless check.success?
+            errors = Check.errors(before, after, cask: cask)
 
-            success && check.success?
+            next success if errors.empty?
+
+            errors.each do |error|
+              onoe error
+            end
+
+            false
           end
         end
 
@@ -93,81 +115,26 @@ module Cask
 
       private
 
-      def step(name, travis_id)
-        success = false
-        output = nil
+      def step(name)
+        group = Formatter.headline(name.to_s, color: :yellow)
 
-        Travis.fold travis_id do
-          print Formatter.headline("#{name} ", color: :yellow)
+        puts "::group::#{group}"
 
-          real_stdout = $stdout.dup
-
-          travis_wait = Thread.new do
-            loop do
-              sleep 595
-              real_stdout.print "\u200b"
-            end
-          end
-
-          success, output = capture do
-            begin
-              yield != false
-            rescue => e
-              $stderr.puts e.message
-              false
-            end
-          end
-
-          travis_wait.kill
-          travis_wait.join
-
-          if success
-            puts Formatter.success("✔")
-            puts output unless output.empty?
-          else
-            puts Formatter.error("✘")
-          end
+        success = begin
+          yield != false
+        rescue => e
+          $stderr.puts e.message
+          $stderr.puts e.backtrace
+          false
         end
 
-        puts output unless success
+        puts "::endgroup::#{group}"
 
         success
       end
 
-      def tap
-        @tap ||= if ENV.key?("TRAVIS_REPO_SLUG")
-          Tap.fetch(ENV["TRAVIS_REPO_SLUG"])
-        else
-          Tap.from_path(Dir.pwd)
-        end
-      end
-
-      def modified_files
-        @modified_files ||= system_command!(
-          "git", args: ["diff", "--name-only", "--diff-filter=AMR", ENV["TRAVIS_COMMIT_RANGE"]]
-        ).stdout.split("\n").map { |path| Pathname(path) }
-      end
-
-      def added_files
-        @added_files ||= system_command!(
-          "git", args: ["diff", "--name-only", "--diff-filter=A", ENV["TRAVIS_COMMIT_RANGE"]]
-        ).stdout.split("\n").map { |path| Pathname(path) }
-      end
-
-      def modified_ruby_files
-        @modified_ruby_files ||= modified_files.select { |path| path.extname == ".rb" }
-      end
-
-      def modified_command_files
-        @modified_command_files ||= modified_files.select { |path| tap.command_file?(path) || path.ascend.to_a.last.to_s == "cmd" }
-      end
-
-      def modified_cask_files
-        @modified_cask_files ||= modified_files.select { |path| tap.cask_file?(path) }
-      end
-
-      def added_cask_files
-        @added_cask_files ||= added_files.select { |path| tap.cask_file?(path) }
+      def manual_installer?(cask)
+        cask.artifacts.any? { |artifact| artifact.is_a?(Artifact::Installer::ManualInstaller) }
       end
     end
   end

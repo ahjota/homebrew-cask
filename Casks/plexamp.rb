@@ -1,10 +1,13 @@
-cask 'plexamp' do
-  version '1.0.5'
-  sha256 'dbec479199d6bf65e42dc2d645ce4441216f21c9040d8cb5a910413cf48d780e'
+cask "plexamp" do
+  version "3.2.2"
+  sha256 "1b9d9bf3aafc08ef4032a46c69e7e8ecde5cd6d53cbc897d6d30e66386a705d0"
 
-  url "https://plexamp.plex.tv/plexamp.plex.tv/Plexamp-#{version}.dmg"
-  name 'Plexamp'
-  homepage 'https://www.plex.tv/plex-labs/#plexamp'
+  # plexamp.plex.tv/ was verified as official when first introduced to the cask
+  url "https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-#{version}.dmg"
+  appcast "https://plexamp.plex.tv/plexamp.plex.tv/desktop/latest-mac.yml"
+  name "Plexamp"
+  desc "Music player focusing on visuals"
+  homepage "https://plexamp.com/"
 
-  app 'Plexamp.app'
+  app "Plexamp.app"
 end

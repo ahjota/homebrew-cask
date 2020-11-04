@@ -1,13 +1,12 @@
-cask 'get-iplayer-automator' do
-  version '1.13.13.b20180827002'
-  sha256 'f5c87ab3e16dea3e9f325fd29855f1b3ea5e68f61da3d08aea12b3fdbe5673d2'
+cask "get-iplayer-automator" do
+  version "1.19.2,b20201018001"
+  sha256 "b63cbac122b7e8ec4a195b96b9f8366ffd974c311b468765e18fbf00184f0e72"
 
-  url "https://github.com/Ascoware/get-iplayer-automator/releases/download/v#{version.major_minor_patch}/Get.iPlayer.Automator.v#{version}.zip"
-  appcast 'https://github.com/Ascoware/get-iplayer-automator/releases.atom'
-  name 'Get iPlayer Automator'
-  homepage 'https://github.com/Ascoware/get-iplayer-automator'
+  url "https://github.com/Ascoware/get-iplayer-automator/releases/download/v#{version.before_comma}/Get.iPlayer.Automator.v#{version.before_comma}.#{version.after_comma}.zip"
+  appcast "https://github.com/Ascoware/get-iplayer-automator/releases.atom",
+          must_contain: version.before_comma
+  name "Get iPlayer Automator"
+  homepage "https://github.com/Ascoware/get-iplayer-automator"
 
-  depends_on macos: '>= :lion'
-
-  app 'Get iPlayer Automator.app'
+  app "Get iPlayer Automator.app"
 end

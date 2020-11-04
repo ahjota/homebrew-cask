@@ -1,14 +1,14 @@
-cask 'endurance' do
-  version '1.2'
-  sha256 '901114580f4e72241ad9233a8c935ba224ee32fa99fd78e3da54168cb21b0833'
+cask "endurance" do
+  version "3.1"
+  sha256 "b408040af3018f2fe813d0100e8a758c3e3a52c62725c5d429ab1cc8f3dfe4be"
 
-  url "https://enduranceapp.com/beta/Endurance#{version}.zip"
-  appcast 'https://enduranceapp.com/appcast'
-  name 'Endurance'
-  homepage 'https://enduranceapp.com/'
+  url "https://enduranceapp.com/downloads/Endurance#{version}.zip"
+  appcast "https://enduranceapp.com/appcast"
+  name "Endurance"
+  homepage "https://enduranceapp.com/"
 
-  app 'Endurance.app'
+  app "Endurance.app"
 
-  uninstall delete:    '/Library/PrivilegedHelperTools/com.MagnetismStudios.endurance.helper',
-            launchctl: 'com.MagnetismStudios.endurance.helper'
+  uninstall delete:    "/Library/PrivilegedHelperTools/com.MagnetismStudios.endurance.helper",
+            launchctl: "com.MagnetismStudios.endurance.helper"
 end

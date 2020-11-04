@@ -1,11 +1,12 @@
-cask 'tales-of-majeyal' do
-  version '1.5.10'
-  sha256 'c955f1b0d84f532ffefacb4ed89b86af45bfb78e10e8a429722b8f055b1d5331'
+cask "tales-of-majeyal" do
+  version "1.7.0"
+  sha256 "af3a11519464e17f22939ce67e3430e34304e0648ddd646d8bbcddd43aac188f"
 
   url "https://te4.org/dl/t-engine/t-engine4-osx-#{version}.zip"
-  name 'Tales of Maj\'Eyal'
-  homepage 'https://te4.org/'
+  appcast "https://te4.org/download"
+  name "Tales of Maj'Eyal"
+  homepage "https://te4.org/"
 
   # Renamed for clarity: app name is inconsistent with its branding.
-  app 'T-Engine.app', target: 'Tales-of-Maj\'Eyal.app'
+  app "T-Engine.app", target: "Tales-of-Maj'Eyal.app"
 end

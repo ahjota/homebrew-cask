@@ -1,16 +1,19 @@
-cask 'airdisplay' do
-  version '3.1'
-  sha256 '8e5743026352c982ecdd948b203026579b0d7f96442b203827372f1a8c3b2206'
+cask "airdisplay" do
+  version "3.4.2"
+  sha256 "272d14f33b3a4a16e5e0e1ebb2d519db4e0e3da17f95f77c91455b354bee7ee7"
 
   url "https://www.avatron.com/updates/software/airdisplay/ad#{version.no_dots}.zip"
-  appcast 'https://avatron.com/updates/software/airdisplay/appcast.xml'
-  name 'Air Display'
-  homepage 'https://avatron.com/applications/air-display/'
+  appcast "https://www.avatron.com/updates/software/airdisplay/appcast.xml"
+  name "Air Display"
+  desc "Utility for using a tablet as a second monitor"
+  homepage "https://avatron.com/applications/air-display/"
 
-  pkg 'Air Display Installer Signed.pkg'
+  depends_on macos: ">= :mojave"
+
+  pkg "Air Display Installer.pkg"
 
   uninstall pkgutil: [
-                       'com.avatron.pkg.AirDisplay',
-                       'com.avatron.pkg.AirDisplayHost2',
-                     ]
+    "com.avatron.pkg.AirDisplay",
+    "com.avatron.pkg.AirDisplayHost2",
+  ]
 end

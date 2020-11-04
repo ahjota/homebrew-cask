@@ -1,12 +1,25 @@
-cask 'airtable' do
-  version '1.3.1'
-  sha256 '1a9c26e1c464b55dd33f8a008aef2ede2f55cd398e4f48f41dc0275581a63f66'
+cask "airtable" do
+  version "1.4.4"
+  sha256 "0acee1683f4b8a444661803bea61d305d4c0f0f71668fc730ff4e2d33c296795"
 
   url "https://static.airtable.com/download/macos/Airtable-#{version}.dmg"
-  name 'Airtable'
-  homepage 'https://airtable.com/'
+  appcast "https://airtable.com/mac"
+  name "Airtable"
+  homepage "https://airtable.com/"
 
   auto_updates true
 
-  app 'Airtable.app'
+  app "Airtable.app"
+
+  uninstall quit: "com.FormaGrid.Airtable"
+
+  zap trash: [
+    "/Library/Logs/DiagnosticReports/Airtable*.*_resource.diag",
+    "~/Library/Logs/Airtable",
+    "~/Library/Caches/com.FormaGrid.Airtable*",
+    "~/Library/Cookies/com.FormaGrid.Airtable.binarycookies",
+    "~/Library/Application Support/Airtable",
+    "~/Library/Preferences/com.FormaGrid.Airtable*.plist",
+    "~/Library/Preferences/ByHost/com.FormaGrid.Airtable.ShipIt.*.plist",
+  ]
 end

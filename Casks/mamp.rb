@@ -1,18 +1,21 @@
-cask 'mamp' do
-  version '5.1'
-  sha256 'eacac778f533ca14a18c5b1da937fe002a3320976a17aeb3756a8f823529e9d9'
+cask "mamp" do
+  version "6.0.1"
+  sha256 "2b924e3d5a15d0f7e69a12e9c3aad3db1299206d3aab9a70f08ee2288b7aa37d"
 
   url "https://downloads.mamp.info/MAMP-PRO/releases/#{version}/MAMP_MAMP_PRO_#{version}.pkg"
-  name 'MAMP'
-  homepage 'https://www.mamp.info/'
+  appcast "https://www.mamp.info/en/downloads/"
+  name "MAMP"
+  desc "Web development solution with Apache, Nginx, PHP & MySQL"
+  homepage "https://www.mamp.info/"
 
-  depends_on macos: '>= :yosemite'
+  auto_updates true
+  depends_on macos: ">= :yosemite"
 
   pkg "MAMP_MAMP_PRO_#{version}.pkg"
 
   postflight do
-    set_ownership ['/Applications/MAMP', '/Applications/MAMP PRO']
+    set_ownership ["/Applications/MAMP", "/Applications/MAMP PRO"]
   end
 
-  uninstall pkgutil: 'de.appsolute.installer.(mamp|mampacticon|mampendinstall|mamppro).pkg'
+  uninstall pkgutil: "de.appsolute.installer.(mamp|mampacticon|mampendinstall|mamppro).pkg"
 end

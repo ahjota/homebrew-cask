@@ -1,18 +1,18 @@
-cask 'simplenote' do
-  version '1.1.7'
-  sha256 '0be66fe9eed95548f3b855ec0e8ebdfd01c82db7c270c7db7547b6c37bed97a0'
+cask "simplenote" do
+  version "2.0.0"
+  sha256 "0e8696239fc2b144ef50e3af9a7d8e134a586e6422262b34b2c84c1ba71ce9da"
 
-  url "https://github.com/Automattic/simplenote-electron/releases/download/v#{version}/Simplenote.app.#{version}.zip"
-  appcast 'https://github.com/Automattic/simplenote-electron/releases.atom'
-  name 'Simplenote'
-  homepage 'https://github.com/Automattic/simplenote-electron'
+  url "https://github.com/Automattic/simplenote-electron/releases/download/v#{version}/Simplenote-macOS-#{version}.dmg"
+  appcast "https://github.com/Automattic/simplenote-electron/releases.atom"
+  name "Simplenote"
+  homepage "https://github.com/Automattic/simplenote-electron"
 
-  app 'Simplenote.app'
+  app "Simplenote.app"
 
   zap trash: [
-               '~/Library/Application Support/Simplenote',
-               '~/Library/Caches/com.automattic.simplenote',
-               '~/Library/Caches/com.automattic.simplenote.ShipIt',
-               '~/Library/Saved Application State/com.automattic.simplenote.savedState',
-             ]
+    "~/Library/Application Support/Simplenote",
+    "~/Library/Caches/com.automattic.simplenote",
+    "~/Library/Caches/com.automattic.simplenote.ShipIt",
+    "~/Library/Saved Application State/com.automattic.simplenote.savedState",
+  ]
 end

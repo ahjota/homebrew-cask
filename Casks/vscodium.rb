@@ -1,11 +1,26 @@
-cask 'vscodium' do
-  version '1.27.2'
-  sha256 'fa7f09be214ad8581ac587c7c31827afeff63158df0f145f4c160a0ca6602860'
+cask "vscodium" do
+  version "1.50.1"
+  sha256 "da84a98f0e93f0d0e0746c13765f7178e0a3516eb35473341d0aa054a2c3bc48"
 
-  url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCode-darwin-#{version}.zip"
-  appcast 'https://github.com/VSCodium/vscodium/releases.atom'
-  name 'VSCodium'
-  homepage 'https://github.com/VSCodium/vscodium'
+  url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium.#{version}.dmg"
+  appcast "https://github.com/VSCodium/vscodium/releases.atom"
+  name "VSCodium"
+  desc "Binary releases of VS Code without MS branding/telemetry/licensing"
+  homepage "https://github.com/VSCodium/vscodium"
 
-  app 'VSCodium.app'
+  auto_updates true
+  conflicts_with cask: "visual-studio-code"
+
+  app "VSCodium.app"
+  binary "#{appdir}/VSCodium.app/Contents/Resources/app/bin/code"
+
+  zap trash: [
+    "~/Library/Application Support/VSCodium",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.visualstudio.code.oss.sfl*",
+    "~/Library/Logs/VSCodium",
+    "~/Library/Preferences/com.visualstudio.code.oss.helper.plist",
+    "~/Library/Preferences/com.visualstudio.code.oss.plist",
+    "~/Library/Saved Application State/com.visualstudio.code.oss.savedState",
+    "~/.vscode-oss",
+  ]
 end

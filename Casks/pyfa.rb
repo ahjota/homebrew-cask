@@ -1,11 +1,12 @@
-cask 'pyfa' do
-  version '2.4.0,yc120.8-1.0'
-  sha256 '608a70a072c0329ace93e426fcac86b7593780642da6b8bfff088daf5d89025a'
+cask "pyfa" do
+  version "2.30.0"
+  sha256 "9156f34ebb9d6dcca8adaf9a7a5e4a3a55ec7658c13c0175f3e6f0959ecf7f98"
 
-  url "https://github.com/pyfa-org/Pyfa/releases/download/v#{version.before_comma}/pyfa-#{version.before_comma}-#{version.after_comma}-mac.zip"
-  appcast 'https://github.com/pyfa-org/Pyfa/releases.atom'
-  name 'pyfa'
-  homepage 'https://github.com/pyfa-org/Pyfa'
+  url "https://github.com/pyfa-org/Pyfa/releases/download/v#{version}/pyfa-v#{version}-mac.zip"
+  appcast "https://github.com/pyfa-org/Pyfa/releases.atom"
+  name "pyfa"
+  desc "Python fitting assistant, cross-platform fitting tool for EVE Online"
+  homepage "https://github.com/pyfa-org/Pyfa"
 
-  app 'pyfa.app'
+  app "pyfa.app"
 end

@@ -1,11 +1,12 @@
-cask 'sejda-pdf' do
-  version '3.4.0'
-  sha256 'da8d92037fb48d5794b250aa789ec616c0a865c60fda047e246f5983e9bff1c3'
+cask "sejda-pdf" do
+  version "7.1.2"
+  sha256 "7fd6f4e4ebdc58ab6d60ce934e43be46d4f4e502788acd1fe8fbf16189217718"
 
-  # bitbucket.org/sejdapdf/sejda-desktop-public was verified as official when first introduced to the cask
-  url "https://bitbucket.org/sejdapdf/sejda-desktop-public/downloads/sejda-desktop_#{version}.dmg"
-  name 'Sejda PDF Desktop'
-  homepage 'https://www.sejda.com/desktop'
+  # sejda-cdn.com/ was verified as official when first introduced to the cask
+  url "https://sejda-cdn.com/downloads/sejda-desktop_#{version}.dmg"
+  appcast "https://www.sejda.com/desktop"
+  name "Sejda PDF Desktop"
+  homepage "https://www.sejda.com/desktop"
 
-  app 'Sejda PDF Desktop.app'
+  app "Sejda PDF Desktop.app"
 end

@@ -1,18 +1,21 @@
-cask 'apple-juice' do
-  version '1.3.0'
-  sha256 'b77a9deefe429ce875c8b628e3fb41b4fb6dbe4408401dd9ec3b9a845b51bc45'
+cask "apple-juice" do
+  version "1.10.2"
+  sha256 "dedbbf56a4d972ed0ad987be5b2577f2c59c55b0b9e4effd05c60f3c29773677"
 
   url "https://github.com/raphaelhanneken/apple-juice/releases/download/#{version}/Apple.Juice.dmg"
-  appcast 'https://github.com/raphaelhanneken/apple-juice/releases.atom'
-  name 'Apple Juice'
-  homepage 'https://github.com/raphaelhanneken/apple-juice'
+  appcast "https://github.com/raphaelhanneken/apple-juice/releases.atom"
+  name "Apple Juice"
+  desc "Battery gauge that displays the remaining battery time and more"
+  homepage "https://github.com/raphaelhanneken/apple-juice"
 
-  app 'Apple Juice.app'
+  depends_on macos: ">= :sierra"
 
-  uninstall quit: 'io.raphaelhanneken.applejuice'
+  app "Apple Juice.app"
+
+  uninstall quit: "io.raphaelhanneken.applejuice"
 
   zap trash: [
-               '~/Library/Caches/io.raphaelhanneken.applejuice',
-               '~/Library/Preferences/io.raphaelhanneken.applejuice.plist',
-             ]
+    "~/Library/Caches/io.raphaelhanneken.applejuice",
+    "~/Library/Preferences/io.raphaelhanneken.applejuice.plist",
+  ]
 end

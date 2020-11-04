@@ -1,13 +1,15 @@
-cask 'laravel-kit' do
-  version '1.2.2'
-  sha256 'afcf520e55cc6667b6247ecea762f11ac215d3bc467c3668d370d0cd1f14b2c2'
+cask "laravel-kit" do
+  version "1.2.4"
+  sha256 "d732b6ede3957d01cd0a119327643f5f7cecd4156d4420abc60ade6776d908f8"
 
-  url "https://github.com/tarequemdhanif/laravel-kit/releases/download/v#{version}/laravel-kit-#{version}-mac.zip"
-  appcast 'https://github.com/tarequemdhanif/laravel-kit/releases.atom'
-  name 'Laravel Kit'
-  homepage 'https://github.com/tarequemdhanif/laravel-kit'
+  # github.com/tmdh/laravel-kit/ was verified as official when first introduced to the cask
+  url "https://github.com/tmdh/laravel-kit/releases/download/v#{version}/laravel-kit-#{version}-mac.zip"
+  appcast "https://github.com/tmdh/laravel-kit/releases.atom"
+  name "Laravel Kit"
+  desc "Desktop app for executing Laravel artisan commands"
+  homepage "https://tmdh.github.io/laravel-kit"
 
   auto_updates true
 
-  app 'Laravel Kit.app'
+  app "Laravel Kit.app"
 end

@@ -1,13 +1,14 @@
-cask 'boxcryptor' do
-  version '2.26.964'
-  sha256 '7522ffa0cc53f7a23f407e81905ee839133bff80bd053188d1d3fd97ec30e6ff'
+cask "boxcryptor" do
+  version "2.37.1043"
+  sha256 "aca956d433ee4bb76ba29de5eeb69825d71989979753d25ce2f16ff8965000a3"
 
   url "https://downloads.boxcryptor.com/boxcryptor/mac/Boxcryptor_v#{version}_Installer.dmg"
-  appcast 'https://rink.hockeyapp.net/api/2/apps/7fd6db3e51a977132e3b120c613eaea8'
-  name 'Boxcryptor'
-  homepage 'https://www.boxcryptor.com/en/'
+  appcast "https://macupdater.net/cgi-bin/check_urls/check_url_redirect.cgi?url=https://www.boxcryptor.com/l/download-macosx"
+  name "Boxcryptor"
+  desc "Tool to encrypt files and folders in various cloud storage services"
+  homepage "https://www.boxcryptor.com/en/"
 
-  depends_on macos: '>= :yosemite'
+  depends_on macos: ">= :sierra"
 
-  app 'Boxcryptor.app'
+  app "Boxcryptor.app"
 end

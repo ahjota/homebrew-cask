@@ -1,10 +1,11 @@
-cask 'qlc-plus' do
-  version '4.11.2'
-  sha256 '5d8b2c17d7be7f36d5ac18cb5ebfb09c0f57cfa6d0015a71e1ae488cb65b17b0'
+cask "qlc-plus" do
+  version "4.12.3"
+  sha256 "31c0779de17719bb4b6acb6e14ffd83f3475baec5f3e75911d6ea55943e33988"
 
-  url "http://qlcplus.org/downloads/#{version}/QLC+_#{version}.dmg"
-  name 'Q Light Controller+'
-  homepage 'http://qlcplus.org/'
+  url "https://qlcplus.org/downloads/#{version}/QLC+_#{version}.dmg"
+  appcast "https://github.com/mcallegari/qlcplus/releases.atom"
+  name "Q Light Controller+"
+  homepage "https://qlcplus.org/"
 
-  app 'QLC+.app'
+  app "QLC+.app"
 end

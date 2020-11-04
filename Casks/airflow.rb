@@ -1,21 +1,23 @@
-cask 'airflow' do
-  version '2.3.9u1'
-  sha256 '4562442dc8ed62c93ecb2d61c012fabeb5f8acddbfe0475f4d01b1668645cf85'
+cask "airflow" do
+  version "3.2.0"
+  sha256 "71f078b3fdce42b40dabf6131dc28d563487e1759db538732a6e91cc1328ba05"
 
-  # amazonaws.com/Airflow was verified as official when first introduced to the cask
-  url "https://s3.amazonaws.com/Airflow/Download/Airflow%20#{version}.zip"
-  appcast 'https://s3.amazonaws.com/Airflow/Updates/appcast-osx.xml'
-  name 'Airflow'
-  homepage 'https://airflowapp.com/'
+  # cdn.downloads.iocave.net/Airflow/ was verified as official when first introduced to the cask
+  url "https://cdn.downloads.iocave.net/Airflow/Airflow%20#{version}.zip"
+  appcast "https://macupdater.net/cgi-bin/check_urls/check_url_redirect.cgi?url=https://airflowapp.com/download/latest?mac"
+  name "Airflow"
+  desc "Watch local content on Apple TV and Chromecast"
+  homepage "https://airflowapp.com/"
 
   auto_updates true
+  depends_on macos: ">= :sierra"
 
-  app 'Airflow.app'
+  app "Airflow.app"
 
   zap trash: [
-               '~/Library/Application Support/Airflow',
-               '~/Library/Caches/com.bitcavehq.Airflow',
-               '~/Library/Preferences/com.bitcavehq.Airflow.plist',
-               '~/Library/Saved Application State/com.bitcavehq.Airflow.savedState',
-             ]
+    "~/Library/Application Support/Airflow",
+    "~/Library/Caches/com.bitcavehq.Airflow",
+    "~/Library/Preferences/com.bitcavehq.Airflow.plist",
+    "~/Library/Saved Application State/com.bitcavehq.Airflow.savedState",
+  ]
 end

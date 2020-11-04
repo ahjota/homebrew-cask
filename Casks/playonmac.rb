@@ -1,11 +1,12 @@
-cask 'playonmac' do
-  version '4.2.12'
-  sha256 '1e2b51cd1bbbde7a7837af3bb4b3cc113034adc4f7ba41e8bb85dd0b8f0f7f2a'
+cask "playonmac" do
+  version "4.4.1"
+  sha256 "6d7ea936dd0cf97400a23605ac195e387074f2e49d3a0a7fb2780fa03ff90e62"
 
-  url "http://repository.playonmac.com/PlayOnMac/PlayOnMac_#{version}.dmg"
-  appcast "https://github.com/PlayOnLinux/POL-POM-#{version.major}/releases.atom"
-  name 'PlayOnMac'
-  homepage 'https://www.playonmac.com/en'
+  url "https://repository.playonmac.com/PlayOnMac/PlayOnMac_#{version}.dmg"
+  appcast "https://repository.playonmac.com/PlayOnMac/"
+  name "PlayOnMac"
+  desc "Allows installation and use of software designed for Windows"
+  homepage "https://www.playonmac.com/"
 
-  app 'PlayOnMac.app'
+  app "PlayOnMac.app"
 end

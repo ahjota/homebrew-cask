@@ -1,11 +1,13 @@
-cask 'dungeon-crawl-stone-soup-console' do
-  version '0.22.0'
-  sha256 '711e6cccd17598c88b042ee61ffbaa17f3f20a983be4c952179e6a93fb698e4e'
+cask "dungeon-crawl-stone-soup-console" do
+  version "0.25.1"
+  sha256 "3fb8da37afbb276f86dc46b2b28f010c614133a77576a7349222b491fcd946ea"
 
-  url "https://crawl.develz.org/release/#{version.major_minor}/stone_soup-#{version}-console-macosx.zip"
-  appcast 'https://github.com/crawl/crawl/releases.atom'
-  name 'Dungeon Crawl Stone Soup'
-  homepage 'https://crawl.develz.org/'
+  # github.com/crawl/crawl/releases was verified as official when first introduced to the cask
+  url "https://github.com/crawl/crawl/releases/download/#{version}/dcss-#{version}-macos-console.zip"
+  appcast "https://github.com/crawl/crawl/releases.atom"
+  name "Dungeon Crawl Stone Soup"
+  desc "Game of dungeon exploration, combat and magic"
+  homepage "https://crawl.develz.org/"
 
-  app 'Dungeon Crawl Stone Soup - Console.app'
+  app "Dungeon Crawl Stone Soup - Console.app"
 end

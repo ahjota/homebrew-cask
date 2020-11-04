@@ -1,11 +1,12 @@
-cask 'navicat-for-mariadb' do
-  version '12.1.8'
-  sha256 '339da2e0da540c5d4ecf629408ea076ed072ea3f192e3c9a177c6d7bc98446c2'
+cask "navicat-for-mariadb" do
+  version "15.0.22"
+  sha256 "a3461c161b3dd14265ff9e7e8db6366598fdd25c3b65f97034b9962ffaf9fcaa"
 
   url "http://download.navicat.com/download/navicat#{version.major_minor.no_dots}_mariadb_en.dmg"
-  appcast 'https://www.navicat.com/en/products/navicat-for-mariadb-release-note'
-  name 'Navicat for MariaDB'
-  homepage 'https://www.navicat.com/products/navicat-for-mariadb'
+  appcast "https://updater.navicat.com/mac/navicat_updates.php?appName=Navicat%20for%20MariaDB&appLang=en"
+  name "Navicat for MariaDB"
+  desc "Database management and administration tool for MariaDB"
+  homepage "https://www.navicat.com/products/navicat-for-mariadb"
 
-  app 'Navicat for MariaDB.app'
+  app "Navicat for MariaDB.app"
 end

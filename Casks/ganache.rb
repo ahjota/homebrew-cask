@@ -1,12 +1,13 @@
-cask 'ganache' do
-  version '1.2.2'
-  sha256 '8e30bbefc304e464ebda416267c4d38758f02f64ac0981c09971a3d548e9c99f'
+cask "ganache" do
+  version "2.5.4"
+  sha256 "1053a5405b8448ebbe7d2e34423e3393fbe9e3e5df7e96305eb34c41495f8ce1"
 
-  # github.com/trufflesuite/ganache was verified as official when first introduced to the cask
-  url "https://github.com/trufflesuite/ganache/releases/download/v#{version}/Ganache-#{version}.dmg"
-  appcast 'https://github.com/trufflesuite/ganache/releases.atom'
-  name 'Ganache'
-  homepage 'http://truffleframework.com/ganache/'
+  # github.com/trufflesuite/ganache/ was verified as official when first introduced to the cask
+  url "https://github.com/trufflesuite/ganache/releases/download/v#{version}/Ganache-#{version}-mac.dmg"
+  appcast "https://github.com/trufflesuite/ganache/releases.atom"
+  name "Ganache"
+  desc "Personal blockchain for Ethereum development"
+  homepage "https://truffleframework.com/ganache/"
 
-  app 'Ganache.app'
+  app "Ganache.app"
 end

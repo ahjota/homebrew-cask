@@ -1,11 +1,13 @@
-cask 'iridient-developer' do
-  version '3.2.3'
-  sha256 '480add11528a77a13af15890912f595c87b82408dd2401d345bec445f2dfcce2'
+cask "iridient-developer" do
+  version "3.4.1"
+  sha256 "86bb9deb95d672e7466f03e62d1e93d234cff80a229e1335d0ce25e210a2ee7a"
 
-  url "http://www.iridientdigital.com/downloads/IridientDeveloper_#{version.no_dots}.dmg"
-  appcast 'http://www.iridientdigital.com/products/rawdeveloper_history.html'
-  name 'Iridient Developer'
-  homepage 'http://www.iridientdigital.com/'
+  url "https://www.iridientdigital.com/downloads/IridientDeveloper_#{version.no_dots}.dmg"
+  appcast "https://www.iridientdigital.com/products/rawdeveloper_history.html",
+          must_contain: version.major_minor
+  name "Iridient Developer"
+  desc "Image processing application"
+  homepage "https://www.iridientdigital.com/"
 
-  app 'Iridient Developer.app'
+  app "Iridient Developer.app"
 end

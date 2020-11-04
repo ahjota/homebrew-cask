@@ -1,23 +1,14 @@
-cask 'scratch' do
-  version '2.0,461'
-  sha256 'dcd311b455be8c19861df3b1077c4175b168688ea8e69296a3f5aee6192a13e0'
+cask "scratch" do
+  version "3.17.1"
+  sha256 "e3b84a84afa75f0b42cd0cbf605ba60a3172a9f8f9c8598c6a5af13ae2cc347d"
 
-  url "https://scratch.mit.edu/scratchr2/static/sa/Scratch-#{version.after_comma}.dmg"
-  appcast 'https://scratch.mit.edu/scratchr2/static/sa/version.xml'
-  name 'Scratch'
-  homepage 'https://scratch.mit.edu/download'
+  url "https://downloads.scratch.mit.edu/desktop/Scratch%20#{version}.dmg"
+  appcast "https://macupdater.net/cgi-bin/check_urls/check_url_redirect.cgi?url=https://downloads.scratch.mit.edu/desktop/Scratch.dmg"
+  name "Scratch"
+  desc "Programs interactive stories, games, and animations"
+  homepage "https://scratch.mit.edu/download"
 
-  depends_on cask: 'adobe-air'
+  depends_on macos: ">= :high_sierra"
 
-  installer script: {
-                      executable: "Install Scratch #{version.major}.app/Contents/MacOS/Install Scratch #{version.major}",
-                      args:       ['-silent'],
-                      sudo:       true,
-                    }
-
-  uninstall script: {
-                      executable: '/Applications/Utilities/Adobe AIR Application Installer.app/Contents/MacOS/Adobe AIR Application Installer',
-                      args:       ['-uninstall', '-silent', "/Applications/Scratch #{version.major}.app"],
-                      sudo:       true,
-                    }
+  app "Scratch #{version.major}.app"
 end

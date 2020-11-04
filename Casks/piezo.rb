@@ -1,11 +1,15 @@
-cask 'piezo' do
-  version '1.5.10'
-  sha256 '5b812b49da60705e13fa710c0ea901599f46c263db99f2292944b511ab71df69'
+cask "piezo" do
+  version "1.6.8"
+  sha256 "ba914f77c85829be373daef5db13d74dd44c65d1ff98c53b16abe1a0c3dd4fc3"
 
-  url 'https://rogueamoeba.com/piezo/download/Piezo.zip'
-  appcast 'https://rogueamoeba.com/piezo/releasenotes.php'
-  name 'Piezo'
-  homepage 'https://rogueamoeba.com/piezo/'
+  url "https://rogueamoeba.com/piezo/download/Piezo.zip"
+  appcast "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&bundleid=com.rogueamoeba.Piezo&system=10146"
+  name "Piezo"
+  desc "Audio recording application"
+  homepage "https://rogueamoeba.com/piezo/"
 
-  app 'Piezo.app'
+  auto_updates true
+  depends_on macos: ">= :sierra"
+
+  app "Piezo.app"
 end

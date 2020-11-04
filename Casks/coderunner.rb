@@ -1,12 +1,18 @@
-cask 'coderunner' do
-  version '3.0'
-  sha256 'd452c388e857f7bb0af242b2e981e988d64b62489027e172791dde92c3089e32'
+cask "coderunner" do
+  version "3.1"
+  sha256 "c85ee95a52af5986a0279a8191feff3f0c7d9f86b0f8030779b48b6a33541bee"
 
-  # dktfof1z89xc1.cloudfront.net was verified as official when first introduced to the cask
-  url "https://dktfof1z89xc1.cloudfront.net/CodeRunner-#{version}.zip"
-  appcast 'https://coderunnerapp.com/appcast.xml'
-  name 'CodeRunner'
-  homepage 'https://coderunnerapp.com/'
+  url "https://coderunnerapp.com/download/update/CodeRunner-#{version}.zip"
+  appcast "https://coderunnerapp.com/appcast.xml"
+  name "CodeRunner"
+  desc "Multi-language programming editor"
+  homepage "https://coderunnerapp.com/"
 
-  app 'CodeRunner.app'
+  app "CodeRunner.app"
+
+  zap trash: [
+    "~/Library/Application Support/CodeRunner",
+    "~/Library/Caches/com.krill.CodeRunner",
+    "~/Library/Saved Application State/com.krill.CodeRunner.savedState",
+  ]
 end

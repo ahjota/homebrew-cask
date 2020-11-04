@@ -1,14 +1,16 @@
-cask 'netnewswire' do
-  version '5.0d7'
-  sha256 'db2dd7363c910f1e6a6c4fc9734cfb9d13cffd3d1b30f9501d3a9a2be63b0b9f'
+cask "netnewswire" do
+  version "5.1.2"
+  sha256 "bd67df55c08ee255a5d8ccaeb5779b82e55e504d0cadfb15a13b2ceb6bc4cda6"
 
-  url "https://ranchero.com/downloads/NetNewsWire#{version}.zip"
-  appcast 'https://ranchero.com/downloads/netnewswire-beta.xml'
-  name 'NetNetsWire'
-  homepage 'https://ranchero.com/netnewswire/'
+  # github.com/brentsimmons/NetNewsWire/ was verified as official when first introduced to the cask
+  url "https://github.com/brentsimmons/NetNewsWire/releases/download/mac-#{version}/NetNewsWire#{version}.zip"
+  appcast "https://github.com/brentsimmons/NetNewsWire/releases.atom"
+  name "NetNewsWire"
+  desc "Free and open-source RSS reader"
+  homepage "https://ranchero.com/netnewswire/"
 
   auto_updates true
-  depends_on macos: '>= :high_sierra'
+  depends_on macos: ">= :catalina"
 
-  app 'NetNewsWire.app'
+  app "NetNewsWire.app"
 end

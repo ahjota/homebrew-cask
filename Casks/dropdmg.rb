@@ -1,18 +1,20 @@
-cask 'dropdmg' do
-  version '3.5.4'
-  sha256 '7834333686e3dcde0c1b6a4560b504e45b17697290d20f2057690aed2c526ae7'
+cask "dropdmg" do
+  version "3.6"
+  sha256 "2db89ef59934074cd3f4011ec7da987a4157567aea0cb928dc6a8c341791a50e"
 
   url "https://c-command.com/downloads/DropDMG-#{version}.dmg"
-  name 'DropDMG'
-  homepage 'https://c-command.com/dropdmg/'
+  appcast "https://c-command.com/dropdmg/"
+  name "DropDMG"
+  desc "Tool to create system disk images and cross-platform archives"
+  homepage "https://c-command.com/dropdmg/"
 
-  app 'DropDMG.app'
+  app "DropDMG.app"
 
   zap trash: [
-               '~/Library/Application Support/DropDMG',
-               '~/Library/Automator/DropDMG.action',
-               '~/Library/Automator/Expand Disk Image.action',
-               '~/Library/Caches/com.c-command.DropDMG',
-               '~/Library/Preferences/com.c-command.DropDMG.plist',
-             ]
+    "~/Library/Application Support/DropDMG",
+    "~/Library/Automator/DropDMG.action",
+    "~/Library/Automator/Expand Disk Image.action",
+    "~/Library/Caches/com.c-command.DropDMG",
+    "~/Library/Preferences/com.c-command.DropDMG.plist",
+  ]
 end

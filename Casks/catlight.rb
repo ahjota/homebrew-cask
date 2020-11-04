@@ -1,12 +1,13 @@
-cask 'catlight' do
-  version '2.14.5'
-  sha256 '912a85e9da25eb65707869cee69c8eb84cbcc5c5169f98ef55df4910300b106e'
+cask "catlight" do
+  version "2.34.1"
+  sha256 "6836696a307e70714da19ceae87d960a5d0e52dd83b3e2e3c36e1132878f5725"
 
-  url "https://www.catlight.io/dl/mac/beta/setup-#{version}.zip"
-  name 'catlight'
-  homepage 'https://catlight.io/'
+  url "https://download.catlight.io/rel/mac/beta/CatLightSetup-#{version}.zip"
+  appcast "https://catlight.io/downloads"
+  name "catlight"
+  homepage "https://catlight.io/"
 
-  depends_on macos: '>= :sierra'
+  depends_on macos: ">= :sierra"
 
-  app 'Catlight.app'
+  app "Catlight.app"
 end

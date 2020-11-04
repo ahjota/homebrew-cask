@@ -1,14 +1,14 @@
-cask 'camtasia' do
-  version '2018.0.3,145'
-  sha256 '7db3be6c75539aee1c32dca2188442a44ee6aaa3041e5a4fba8512f613e5155f'
+cask "camtasia" do
+  version "2020.0.10"
+  sha256 "88df3f6170c22270d473c9ba63e52cef025a3a728d3af04518ac3db676f146ff"
 
-  # rink.hockeyapp.net/api/2/apps/5d440dc130030d8a5db2ee6265d8df09 was verified as official when first introduced to the cask
-  url "https://rink.hockeyapp.net/api/2/apps/5d440dc130030d8a5db2ee6265d8df09/app_versions/#{version.after_comma}?format=zip"
-  appcast 'https://rink.hockeyapp.net/api/2/apps/5d440dc130030d8a5db2ee6265d8df09'
-  name 'Camtasia'
-  homepage 'https://www.techsmith.com/camtasia.html'
+  url "https://download.techsmith.com/camtasiamac/releases/Camtasia.dmg"
+  appcast "https://support.techsmith.com/hc/en-us/articles/115006624748-Camtasia-Mac-Version-History"
+  name "Camtasia"
+  homepage "https://www.techsmith.com/camtasia.html"
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "Camtasia #{version.major}.app"
 end

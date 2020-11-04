@@ -1,18 +1,19 @@
-cask 'qutebrowser' do
-  version '1.4.1'
-  sha256 'c03ce9304d439b3a8c8dcd5bf5c193625c505759fa1ca8481345f9a26e2a7cd6'
+cask "qutebrowser" do
+  version "1.14.0"
+  sha256 "84b83681170ae0046035704721e68cfa4793db81d39b984184d7f74b8b5ba50d"
 
-  # github.com/qutebrowser/qutebrowser was verified as official when first introduced to the cask
+  # github.com/qutebrowser/qutebrowser/ was verified as official when first introduced to the cask
   url "https://github.com/qutebrowser/qutebrowser/releases/download/v#{version}/qutebrowser-#{version}.dmg"
-  appcast 'https://github.com/qutebrowser/qutebrowser/releases.atom'
-  name 'qutebrowser'
-  homepage 'https://www.qutebrowser.org/'
+  appcast "https://github.com/qutebrowser/qutebrowser/releases.atom"
+  name "qutebrowser"
+  desc "Keyboard-driven, vim-like browser based on PyQt5"
+  homepage "https://www.qutebrowser.org/"
 
-  app 'qutebrowser.app'
+  app "qutebrowser.app"
 
   zap trash: [
-               '~/Library/Application Support/qutebrowser',
-               '~/Library/Caches/qutebrowser',
-               '~/Library/Preferences/qutebrowser',
-             ]
+    "~/Library/Application Support/qutebrowser",
+    "~/Library/Caches/qutebrowser",
+    "~/Library/Preferences/qutebrowser",
+  ]
 end

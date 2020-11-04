@@ -1,11 +1,24 @@
-cask 'nteract' do
-  version '0.11.7'
-  sha256 'c9726b739c2d48d3d19edaeae347b786ec4d64cec732656c31a820cc8895e2dc'
+cask "nteract" do
+  version "0.26.0"
+  sha256 "8cf33c99cdfdd9bd1623aac9ac0ea51f9b6043a4be28b4520429413a79af5856"
 
   url "https://github.com/nteract/nteract/releases/download/v#{version}/nteract-#{version}.dmg"
-  appcast 'https://github.com/nteract/nteract/releases.atom'
-  name 'nteract'
-  homepage 'https://github.com/nteract/nteract'
+  appcast "https://github.com/nteract/nteract/releases.atom"
+  name "nteract"
+  desc "Interactive computing suite"
+  homepage "https://github.com/nteract/nteract"
 
-  app 'nteract.app'
+  auto_updates true
+
+  app "nteract.app"
+
+  uninstall delete: "/usr/local/bin/nteract"
+
+  zap trash: [
+    "~/Library/Application Support/Caches/nteract-updater",
+    "~/Library/Application Support/nteract",
+    "~/Library/Logs/nteract",
+    "~/Library/Preferences/io.nteract.nteract.plist",
+    "~/Library/Saved Application State/io.nteract.nteract.savedState",
+  ]
 end

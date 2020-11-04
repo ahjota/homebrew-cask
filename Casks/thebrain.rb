@@ -1,10 +1,11 @@
-cask 'thebrain' do
-  version '9.0.264.0'
-  sha256 'bec17f4428eb1509d79c0510fcc7a2f88c3acf3d5b121ff6b406c6bdc9005f5c'
+cask "thebrain" do
+  version "11.0.131.0"
+  sha256 "145a9ad20115c2bfc7346880a67d6da4a621d28d25a6f9784c2aa63797b08116"
 
-  url "http://updater.thebrain.com/files/TheBrain#{version}.dmg"
-  name 'TheBrain'
-  homepage 'https://www.thebrain.com/'
+  url "https://updater.thebrain.com/files/TheBrain#{version}.dmg"
+  appcast "https://macupdater.net/cgi-bin/check_urls/check_url_redirect.cgi?url=https://salesapi.thebrain.com/?a=doDirectDownload%26id=11000"
+  name "TheBrain"
+  homepage "https://www.thebrain.com/"
 
   app "TheBrain #{version.major}.app"
 end

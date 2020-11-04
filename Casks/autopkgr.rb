@@ -1,12 +1,13 @@
-cask 'autopkgr' do
-  version '1.4.2'
-  sha256 '3f73bae06c0e61fe6af41ead9455ade181e6b62fec4a85c7235c0834c50546a5'
+cask "autopkgr" do
+  version "1.5.5"
+  sha256 "1f39b639fdce43d45f9869b5969116a685f650ac49c52f12a6e8682925ec31d7"
 
-  # github.com/lindegroup/autopkgr was verified as official when first introduced to the cask
+  # github.com/lindegroup/autopkgr/ was verified as official when first introduced to the cask
   url "https://github.com/lindegroup/autopkgr/releases/download/v#{version}/AutoPkgr-#{version}.dmg"
-  appcast 'https://github.com/lindegroup/autopkgr/releases.atom'
-  name 'AutoPkgr'
-  homepage 'https://www.lindegroup.com/autopkgr'
+  appcast "https://github.com/lindegroup/autopkgr/releases.atom"
+  name "AutoPkgr"
+  desc "Install and configure AutoPkg"
+  homepage "https://www.lindegroup.com/autopkgr"
 
-  app 'AutoPkgr.app'
+  app "AutoPkgr.app"
 end

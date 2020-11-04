@@ -1,17 +1,22 @@
-cask 'gobdokumente' do
-  version '1.2'
-  sha256 '7afdd5c9d7c5efdd69d9342ce2f816258e23edd0a5341cebc7e1f137d211150d'
+cask "gobdokumente" do
+  if MacOS.version <= :catalina
+    version "1.6.8"
+    sha256 "2c788492fd66ffec93c70cbd0d1c10ceb03bcf2af1f8ccc5fbbbbb154e4999b1"
+    url "https://download.moapp.software/GoBDokumente.zip"
+  else
+    version "1.7.2"
+    sha256 "f01564c3115619eddedeb9a4045c895fc8bbaaeb8d320a459cd71c62da92edc4"
+    url "https://download.moapp.software/GoBDokumente_BS.zip"
+  end
 
-  # moapp.software was verified as official when first introduced to the cask
-  url 'https://download.moapp.software/GoBDokumente.zip'
-  appcast 'https://sparkle.moapp.software/gobdokumente.xml'
-  name 'GoBDokumente'
-  homepage 'https://gobdokumente.de/'
+  # download.moapp.software/ was verified as official when first introduced to the cask
+  appcast "https://sparkle.moapp.software/gobdokumente.xml"
+  name "GoBDokumente"
+  name "GoBDocuments"
+  desc "Document management system"
+  homepage "https://gobdokumente.de/"
 
-  app 'GoBDokumente.app'
+  depends_on macos: ">= :el_capitan"
 
-  zap trash: [
-               '~/Library/Preferences/com.moapp.GoBDokumente.plist',
-               '~/Library/Caches/com.moapp.GoBDokumente',
-             ]
+  app "GoBDokumente.app"
 end

@@ -1,10 +1,13 @@
-cask 'nozbe' do
-  version '3.8.1'
-  sha256 'b676843813dc68c327244a9af1ab03e26c028c900033c659c18e5412bc15b575'
+cask "nozbe" do
+  version "3.13.0"
+  sha256 "384a15bd9b34935b7f0f152ebdd5c8653e0aed86e01c4e7844acfe34769cc4c9"
 
   url "https://files.nozbe.com/#{version.no_dots}/release/Nozbe.app.zip"
-  name 'Nozbe'
-  homepage 'https://nozbe.com/'
+  name "Nozbe"
+  desc "Task manager"
+  homepage "https://nozbe.com/"
 
-  app 'Nozbe.app'
+  depends_on macos: ">= :sierra"
+
+  app "Nozbe.app"
 end

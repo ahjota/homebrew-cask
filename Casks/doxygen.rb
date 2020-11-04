@@ -1,11 +1,11 @@
-cask 'doxygen' do
-  version '1.8.14'
-  sha256 '6df23153620cfce5d05362ca47be967de9af1b3b27c0de812cd936eb680d8559'
+cask "doxygen" do
+  version "1.8.20"
+  sha256 "06c6632f1ac7242a80d148af4867007b0e458fc9b4829b84b4a970ce7c4d3677"
 
-  url "https://ftp.stack.nl/pub/users/dimitri/Doxygen-#{version}.dmg"
-  appcast 'https://www.stack.nl/~dimitri/doxygen/manual/changelog.html'
-  name 'Doxygen'
-  homepage 'https://www.stack.nl/~dimitri/doxygen/'
+  url "https://doxygen.nl/files/Doxygen-#{version}.dmg"
+  appcast "https://www.doxygen.nl/download.html"
+  name "Doxygen"
+  homepage "https://www.doxygen.nl/"
 
-  app 'Doxygen.app'
+  app "Doxygen.app"
 end

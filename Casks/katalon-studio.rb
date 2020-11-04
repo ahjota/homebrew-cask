@@ -1,10 +1,11 @@
-cask 'katalon-studio' do
-  version '5.7.1'
-  sha256 '5e432b9e66d5aacec8d5e195a7ae15667ae552055e167eae507de938e60d7d64'
+cask "katalon-studio" do
+  version "7.7.2"
+  sha256 "7e36243c0dcd29c23f6be6e2b8d4eb38e96ff3b31fcd113223f7b9bc75f8feb5"
 
-  url "https://download.katalon.com/#{version}/Katalon_Studio.dmg"
-  name 'Katalon Studio'
-  homepage 'https://www.katalon.com/download/'
+  url "https://download.katalon.com/#{version}/Katalon%20Studio.dmg"
+  appcast "https://github.com/katalon-studio/katalon-studio/releases.atom"
+  name "Katalon Studio"
+  homepage "https://www.katalon.com/download/"
 
-  app 'Katalon Studio.app'
+  app "Katalon Studio.app"
 end

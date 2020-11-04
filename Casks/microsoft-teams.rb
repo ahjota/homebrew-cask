@@ -1,13 +1,28 @@
-cask 'microsoft-teams' do
-  version '1.1.00.25455'
-  sha256 'ef3eedb53d2fdfc989c76e799e5b25657434a3fd676a5e1c36bb58d8f9bddb62'
+cask "microsoft-teams" do
+  version "1.3.00.26266"
+  sha256 "5237ca869c0c84a330b3038ff8e5ca8b1c430413a663c2642b9d799ec998bbe2"
 
-  url "https://statics.teams.microsoft.com/production-osx/#{version}/Teams_osx.dmg"
-  appcast 'https://teams.microsoft.com/downloads/DesktopUrl?env=production&plat=osx'
-  name 'Microsoft Teams'
-  homepage 'https://teams.microsoft.com/downloads'
+  url "https://statics.teams.microsoft.com/production-osx/#{version}/Teams_osx.pkg"
+  appcast "https://macupdater.net/cgi-bin/check_urls/check_url_redirect.cgi?url=https://aka.ms/teamsmac"
+  name "Microsoft Teams"
+  homepage "https://teams.microsoft.com/downloads"
 
   auto_updates true
 
-  app 'Microsoft Teams.app'
+  pkg "Teams_osx.pkg"
+
+  uninstall pkgutil:   "com.microsoft.teams",
+            launchctl: "com.microsoft.teams.TeamsUpdaterDaemon"
+
+  zap trash: [
+    "/Library/Logs/Microsoft/Teams",
+    "/Library/Preferences/com.microsoft.teams.plist",
+    "~/Library/Application Support/Microsoft/Teams",
+    "~/Library/Application Support/com.microsoft.teams",
+    "~/Library/Caches/com.microsoft.teams",
+    "~/Library/Cookies/com.microsoft.teams.binarycookies",
+    "~/Library/Logs/Microsoft Teams",
+    "~/Library/Preferences/com.microsoft.teams.plist",
+    "~/Library/Saved Application State/com.microsoft.teams.savedState",
+  ]
 end

@@ -13,16 +13,11 @@ This document describes the algorithm implemented in the `generate_cask_token` s
 
 ## Purpose
 
-The purpose of these stringent conventions is to:
+Software vendors are often inconsistent with their naming. By enforcing strict naming conventions we aim to:
 
-* Unambiguously boil down the name of the software into a unique identifier
-* Minimize renaming events
 * Prevent duplicate submissions
-
-The token itself should be:
-
-* Suitable for use as a filename
-* Mnemonic
+* Minimize renaming events
+* Unambiguously boil down the name of the software into a unique identifier
 
 Details of software names and brands will inevitably be lost in the conversion to a minimal token. To capture the vendor’s full name for a distribution, use the [`name`](https://github.com/Homebrew/homebrew-cask/blob/master/doc/cask_language_reference/stanzas/name.md) within a Cask. `name` accepts an unrestricted UTF-8 string.
 
@@ -103,8 +98,6 @@ To convert the App’s Simplified Name (above) to a token:
 * Collapse a series of multiple hyphens into one hyphen.
 * Delete a leading or trailing hyphen.
 
-We avoid defining Cask tokens in the repository which differ only by the placement of hyphens. Prepend the vendor name if needed to disambiguate the token.
-
 ## Cask Filenames
 
 Casks are stored in a Ruby file named after the token, with the file extension `.rb`.
@@ -135,20 +128,16 @@ Cask taps have naming conventions specific to each tap.
 
 [Homebrew/cask-drivers](https://github.com/Homebrew/homebrew-cask-drivers/blob/master/CONTRIBUTING.md#naming-driver-casks)
 
-[Homebrew/cask-eid](https://github.com/Homebrew/homebrew-cask-eid/blob/master/CONTRIBUTING.md#naming-eid-casks)
-
 # Special Affixes
 
 A few situations require a prefix or suffix to be added to the token.
 
-## Token Overlap With Another Cask
+## Token Overlap
 
 When the token for a new Cask would otherwise conflict with the token of an already existing Cask, the nature of that overlap dictates the token (for possibly both Casks). See [Forks and Apps with Conflicting Names](../development/adding_a_cask.md#forks-and-apps-with-conflicting-names) for information on how to proceed.
-
-## Token Overlap With a Formula
-
-If a Homebrew formula and a Homebrew Cask cask both exist with the same token and they both refer to the same app — respectively a CLI and a GUI — and the GUI app is simply a wrapper of the CLI tool but has been decided to provide enough value to warrant the inclusion of both the formula and the cask, the cask will have the `-app` suffix. This is the only instance where an `-app` suffix is allowed, precisely so the “why” is clear when you know the rule.
 
 ## Potentially Misleading Name
 
 If the token for a piece of unofficial software that interacts with a popular service would make it look official and the vendor is not authorised to use the name, [a prefix must be added](../development/adding_a_cask.md#forks-and-apps-with-conflicting-names) for disambiguation.
+
+In cases where the prefix is ambiguous and would make the app appear official, the `-unofficial` suffix may be used.

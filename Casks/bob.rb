@@ -1,12 +1,18 @@
-cask 'bob' do
-  version '0.1.3'
-  sha256 '2093de6354efeade9776a5764da2a0cc364efb3ea72e64cdfb1afcb412e2166d'
+cask "bob" do
+  version "0.5.2"
+  sha256 "e31adc5d142b4a03609e9100708c50c36472e84f50a6f7f0b918c5e00c501f88"
 
-  url "https://github.com/casperstorm/Bob/releases/download/#{version}/backup-bob.app.zip"
-  appcast 'https://github.com/casperstorm/Bob/releases.atom'
-  name 'Bob'
-  homepage 'https://github.com/casperstorm/Bob'
+  url "https://github.com/ripperhe/Bob/releases/download/v#{version}/Bob.app.zip"
+  appcast "https://github.com/ripperhe/Bob/releases.atom"
+  name "Bob"
+  homepage "https://github.com/ripperhe/Bob"
 
-  # Renamed for consistency: app name is different in the Finder and in a shell.
-  app 'backup-bob.app', target: 'Bob.app'
+  depends_on macos: ">= :sierra"
+
+  app "Bob.app"
+
+  zap trash: [
+    "~/Library/Preferences/com.ripperhe.Bob.plist",
+    "~/Library/Caches/com.ripperhe.Bob",
+  ]
 end

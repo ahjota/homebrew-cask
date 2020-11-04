@@ -1,21 +1,33 @@
-cask 'protonvpn' do
-  version '1.2.5'
-  sha256 '41a9d0960c85b3a8377b3d1d90033691d151ca0524eb7df553126f03685ad61b'
+cask "protonvpn" do
+  version "1.8.0"
+  sha256 "549c9a19a75cc23e238b276fb27006b7c310434ce3539b588a990f2b43ba3e05"
 
   url "https://protonvpn.com/download/ProtonVPN_mac_v#{version}.dmg"
-  appcast 'https://protonvpn.com/download/macos-update.xml'
-  name 'ProtonVPN'
-  homepage 'https://protonvpn.com/'
+  appcast "https://protonvpn.com/download/macos-update2.xml"
+  name "ProtonVPN"
+  desc "VPN client focusing on security"
+  homepage "https://protonvpn.com/"
 
-  app 'ProtonVPN.app'
+  auto_updates true
+  depends_on macos: ">= :sierra"
 
-  uninstall launchctl: 'ch.protonvpn.ProtonVPNStarter',
-            quit:      'ch.protonvpn.mac'
+  app "ProtonVPN.app"
+
+  uninstall launchctl: "ch.protonvpn.ProtonVPNStarter",
+            quit:      "ch.protonvpn.mac"
 
   zap trash: [
-               '~/Library/Application Scripts/ch.protonvpn.ProtonVPNStarter',
-               '~/Library/Containers/ch.protonvpn.ProtonVPNStarter',
-               '~/Library/Application Scripts/ch.protonvpn.mac',
-               '~/Library/Containers/ch.protonvpn.mac',
-             ]
+    "~/Library/Application Scripts/ch.protonvpn.ProtonVPNStarter",
+    "~/Library/Application Scripts/ch.protonvpn.mac",
+    "~/Library/Application Support/CrashReporter/ProtonVPN*",
+    "~/Library/Application Support/ProtonVPN",
+    "~/Library/Caches/SentryCrash/ProtonVPN",
+    "~/Library/Caches/ch.protonvpn.mac",
+    "~/Library/Caches/com.apple.nsurlsessiond/Downloads/ch.protonvpn.mac",
+    "~/Library/Containers/ch.protonvpn.*",
+    "~/Library/Cookies/ch.protonvpn.mac.binarycookies",
+    "~/Library/Logs/ProtonVPN.log",
+    "~/Library/Preferences/ch.protonvpn.mac.plist",
+    "~/Library/WebKit/ch.protonvpn.mac",
+  ]
 end

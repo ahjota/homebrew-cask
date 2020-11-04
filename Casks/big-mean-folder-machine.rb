@@ -1,13 +1,12 @@
-cask 'big-mean-folder-machine' do
-  version '2.37'
-  sha256 '8410146f1378ef33244dd2fa816fcc7a6c211d2f3b567526805fd43f0ffd4d59'
+cask "big-mean-folder-machine" do
+  version "2.42"
+  sha256 "5324a4904a5559edf587ffd3f5af70aa0a46744631721a8761463c792f755004"
 
-  url 'http://www.publicspace.net/download/BMFM.dmg'
-  appcast "http://www.publicspace.net/app/bmfm#{version.major}.xml"
-  name 'Big Mean Folder Machine'
-  homepage 'http://www.publicspace.net/BigMeanFolderMachine/'
-
-  depends_on macos: '>= :lion'
+  url "https://www.publicspace.net/download/BMFM.dmg"
+  appcast "https://www.publicspace.net/app/bmfm#{version.major}.xml"
+  name "Big Mean Folder Machine"
+  desc "File/folder management utility"
+  homepage "https://www.publicspace.net/BigMeanFolderMachine/"
 
   app "Big Mean Folder Machine #{version.major}.app"
 end

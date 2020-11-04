@@ -1,23 +1,25 @@
-cask 'mono-mdk' do
-  version '5.14.0.177'
-  sha256 'a33636dc80f887332b1bd13bd836737007e78c6703478aa891efb99fd6db8779'
+cask "mono-mdk" do
+  version "6.12.0.90"
+  sha256 "ec76e148c1b1dce25a154a7c8f9cf8c7fdbf7a30f6784dd1421db86537ace448"
 
   url "https://download.mono-project.com/archive/#{version.major_minor_patch}/macos-10-universal/MonoFramework-MDK-#{version}.macos10.xamarin.universal.pkg"
-  appcast 'https://www.mono-project.com/download/stable/'
-  name 'Mono'
-  homepage 'http://www.mono-project.com/'
+  appcast "https://www.mono-project.com/download/stable/"
+  name "Mono"
+  homepage "https://www.mono-project.com/"
+
+  conflicts_with cask: "mono-mdk-for-visual-studio"
 
   pkg "MonoFramework-MDK-#{version}.macos10.xamarin.universal.pkg"
 
   uninstall delete:  [
-                       "/Library/Frameworks/Mono.framework/Versions/#{version.major_minor_patch}",
-                       '/private/etc/paths.d/mono-commands',
-                     ],
-            pkgutil: 'com.xamarin.mono-*',
+    "/Library/Frameworks/Mono.framework/Versions/#{version.major_minor_patch}",
+    "/private/etc/paths.d/mono-commands",
+  ],
+            pkgutil: "com.xamarin.mono-*",
             rmdir:   [
-                       '/Library/Frameworks/Mono.framework/Versions',
-                       '/Library/Frameworks/Mono.framework',
-                     ]
+              "/Library/Frameworks/Mono.framework/Versions",
+              "/Library/Frameworks/Mono.framework",
+            ]
 
   caveats <<~EOS
     Installing #{token} removes mono and mono dependant formula binaries in

@@ -1,12 +1,19 @@
-cask 'freac' do
-  version '1.1-alpha-20180716a'
-  sha256 'b0e0ce28a114d5da614667a74a31351438a8012da3f6788ed00667c1b608eb62'
+cask "freac" do
+  version "1.1.3"
+  sha256 "5a7bb46b36e965ce5b0ecedbdee6a75982eb54ed6d594aed71716290a169b682"
 
-  # sourceforge.net/bonkenc was verified as official when first introduced to the cask
-  url "https://downloads.sourceforge.net/bonkenc/freac-#{version}-macosx.dmg"
-  appcast 'https://sourceforge.net/projects/bonkenc/rss'
-  name 'fre:ac'
-  homepage 'https://www.freac.org/'
+  # github.com/enzo1982/freac/ was verified as official when first introduced to the cask
+  url "https://github.com/enzo1982/freac/releases/download/v#{version}/freac-#{version}-macosx.dmg"
+  appcast "https://github.com/enzo1982/freac/releases.atom"
+  name "fre:ac"
+  desc "Audio converter and CD ripper"
+  homepage "https://www.freac.org/"
 
-  app 'freac.app'
+  app "freac.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.freac.freac.sfl*",
+    "~/Library/Preferences/org.freac.freac.plist",
+    "~/Library/Saved Application State/org.freac.freac.savedState",
+  ]
 end

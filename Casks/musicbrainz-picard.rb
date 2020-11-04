@@ -1,20 +1,22 @@
-cask 'musicbrainz-picard' do
-  version '2.0.4'
-  sha256 'c54c424906c1faad122e901c6f487687e5bd8314f3a77b6c593e53a56c6e293a'
+cask "musicbrainz-picard" do
+  version "2.5.1"
+  sha256 "f828aba19eb9203cc2080bddd1613fdaa4fa937f86520935d3d9c93a298c3e19"
 
-  url "http://ftp.musicbrainz.org/pub/musicbrainz/picard/MusicBrainz-Picard-#{version}.dmg"
-  appcast 'https://picard.musicbrainz.org/changelog/'
-  name 'MusicBrainz Picard'
-  homepage 'https://picard.musicbrainz.org/'
+  # musicbrainz.osuosl.org/pub/ was verified as official when first introduced to the cask
+  url "https://musicbrainz.osuosl.org/pub/musicbrainz/picard/MusicBrainz-Picard-#{version}.dmg"
+  appcast "https://picard.musicbrainz.org/downloads/"
+  name "MusicBrainz Picard"
+  desc "Cross-platform music tagger"
+  homepage "https://picard.musicbrainz.org/"
 
-  depends_on macos: '>= :yosemite'
+  depends_on macos: ">= :sierra"
 
-  app 'MusicBrainz Picard.app'
+  app "MusicBrainz Picard.app"
 
   zap trash: [
-               '~/.config/MusicBrainz',
-               '~/Library/Caches/MusicBrainz',
-               '~/Library/Preferences/org.musicbrainz.picard.plist',
-               '~/Library/Saved Application State/org.musicbrainz.picard.savedState',
-             ]
+    "~/.config/MusicBrainz",
+    "~/Library/Caches/MusicBrainz",
+    "~/Library/Preferences/org.musicbrainz.picard.plist",
+    "~/Library/Saved Application State/org.musicbrainz.picard.savedState",
+  ]
 end

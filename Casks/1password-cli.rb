@@ -1,14 +1,17 @@
-cask '1password-cli' do
-  version '0.5.4'
-  sha256 '93c8bae059e784fc2409c07e09b53648bd449feca3af1bfec4260e9ae9648830'
+cask "1password-cli" do
+  version "1.8.0"
+  sha256 "6decb453be4e507336b004a0169befcee7dc9918198ae6fa33d0b55d8e8acc5f"
 
-  # cache.agilebits.com/dist/1P/op/pkg was verified as official when first introduced to the cask
-  url "https://cache.agilebits.com/dist/1P/op/pkg/v#{version}/op_darwin_amd64_v#{version}.zip"
-  appcast 'https://app-updates.agilebits.com/product_history/CLI'
-  name '1Password CLI'
-  homepage 'https://support.1password.com/command-line/'
+  # cache.agilebits.com/dist/1P/op/pkg/ was verified as official when first introduced to the cask
+  url "https://cache.agilebits.com/dist/1P/op/pkg/v#{version}/op_darwin_amd64_v#{version}.pkg"
+  appcast "https://app-updates.agilebits.com/product_history/CLI"
+  name "1Password CLI"
+  desc "Command-line helper for the 1Password password manager"
+  homepage "https://support.1password.com/command-line/"
 
-  binary 'op'
+  pkg "op_darwin_amd64_v#{version}.pkg"
 
-  zap trash: '~/.op'
+  uninstall pkgutil: "com.1password.op"
+
+  zap trash: "~/.op"
 end

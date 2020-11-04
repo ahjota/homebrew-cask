@@ -1,11 +1,11 @@
-cask 'lehreroffice' do
-  version '2018.14.3'
-  sha256 'eab53e578fff129feae262d5b9fff4823166356d7d14bd4a2b1e6d9069e24a4c'
+cask "lehreroffice" do
+  version "2020.7.2"
+  sha256 "ae7de0f6c7b03a925a3a24472ae0ce8f6f71beb9c39b2a18cd90742d5f7d9ad8"
 
-  url 'https://www.lehreroffice.ch/lo/dateien/easy/lo_desktop_macos.dmg'
-  appcast 'https://www.lehreroffice.ch/services/update/getcurrentversion.php?app=Desktop'
-  name 'LehrerOffice'
-  homepage 'https://www.lehreroffice.ch/'
+  url "https://www.lehreroffice.ch/lo/dateien/easy/lo_desktop_macos.dmg"
+  appcast "https://www.lehreroffice.ch/services/update/getcurrentversion.php?app=Desktop"
+  name "LehrerOffice"
+  homepage "https://www.lehreroffice.ch/"
 
-  app 'LehrerOffice.app'
+  app "LehrerOffice.app"
 end

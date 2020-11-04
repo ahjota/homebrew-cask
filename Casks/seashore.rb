@@ -1,17 +1,12 @@
-cask 'seashore' do
-  version '0.5.1'
-  sha256 '96463a3642f162a20b160d8df273e9b27a5fdbf9708bee6ebf6a6c8528047765'
+cask "seashore" do
+  version "2.5.9"
+  sha256 "511d1bed52249b81d4dddf10013bee1d2f5e8f0e7f0df54ccf0d7feffd69ec2d"
 
-  url "https://downloads.sourceforge.net/seashore/seashore%20binaries/Seashore%20#{version}/Seashore.zip"
-  appcast 'https://sourceforge.net/projects/seashore/rss?path=/seashore%20binaries'
-  name 'Seashore'
-  homepage 'http://seashore.sourceforge.net/'
+  url "https://github.com/robaho/seashore/releases/download/v#{version}/seashore-bin-#{version}.dmg"
+  appcast "https://github.com/robaho/seashore/releases.atom"
+  name "Seashore"
+  desc "Image editing application similar to GIMP"
+  homepage "https://github.com/robaho/seashore"
 
-  depends_on macos: '<= :el_capitan'
-
-  app 'Seashore.app'
-
-  caveats do
-    discontinued
-  end
+  app "Seashore.app"
 end

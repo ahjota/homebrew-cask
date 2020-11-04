@@ -1,10 +1,10 @@
-cask 'sixtyforce' do
+cask "sixtyforce" do
   version :latest
   sha256 :no_check
 
-  url 'http://sixtyforce.com/download/sixtyforce.zip'
-  name 'sixtyforce'
-  homepage 'http://sixtyforce.com/'
+  url "https://sixtyforce.com/download/sixtyforce.zip"
+  name "sixtyforce"
+  homepage "https://sixtyforce.com/"
 
-  app 'sixtyforce.app'
+  app "sixtyforce.app"
 end

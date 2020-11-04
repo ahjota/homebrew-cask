@@ -1,10 +1,12 @@
-cask 'photozoom-pro' do
-  version '7'
+cask "photozoom-pro" do
+  version "8"
   sha256 :no_check # required as upstream package is updated in-place
 
-  url "http://files.benvista.com/PhotoZoom_Pro_#{version}.dmg"
-  name 'PhotoZoom Pro'
-  homepage 'https://www.benvista.com/photozoompro'
+  url "https://www.benvista.com/photozoompro#{version}/download/mac",
+      user_agent: :fake
+  name "PhotoZoom Pro"
+  desc "Software for enlarging and downsizing digital photos and graphics"
+  homepage "https://www.benvista.com/photozoompro"
 
   pkg "PhotoZoom Pro #{version} Installer.mpkg"
 

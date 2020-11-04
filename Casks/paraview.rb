@@ -1,12 +1,14 @@
-cask 'paraview' do
-  version '5.5.2'
-  sha256 '9fd955ae64b064d1f6f152a6ba3ab789dfb6950e4de1e16f869cae9fd96b6caf'
+cask "paraview" do
+  version "5.8.1"
+  sha256 "df0de9347c8bfc674ffd2cf88a72ddc0005545ffa68412d63b8631466096656e"
 
-  url "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.5&type=binary&os=macOS&downloadFile=ParaView-#{version}-Qt5-MPI-OSX10.8-64bit.dmg",
+  url "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v#{version.major_minor}&type=binary&os=macOS&downloadFile=ParaView-#{version}-MPI-OSX10.12-Python2.7-64bit.dmg",
       user_agent: :fake
-  appcast 'http://www.paraview.org/files/paraview-download.js'
-  name 'ParaView'
-  homepage 'https://www.paraview.org/'
+  appcast "https://www.paraview.org/files/listing.txt"
+  name "ParaView"
+  homepage "https://www.paraview.org/"
+
+  depends_on macos: ">= :sierra"
 
   app "ParaView-#{version}.app"
 end

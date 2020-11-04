@@ -1,17 +1,21 @@
-cask 'keep-it' do
-  version '1.4.3'
-  sha256 'c940df2c8af03825ed408c59c448b749499fb87b420f8a98c07d1618084dd398'
+cask "keep-it" do
+  version "1.8.20"
+  sha256 "f104f2df6eb0a082d754d257a45bc55c620e437bd0150c734b24deeb69f71a06"
 
   url "https://reinventedsoftware.com/keepit/downloads/KeepIt_#{version}.dmg"
-  appcast 'https://reinventedsoftware.com/keepit/downloads/keepit.xml'
-  name 'Keep It'
-  homepage 'https://reinventedsoftware.com/keepit/'
+  appcast "https://reinventedsoftware.com/keepit/downloads/keepit.xml"
+  name "Keep It"
+  desc "Notebook, scrapbook and organizer tool"
+  homepage "https://reinventedsoftware.com/keepit/"
 
-  app 'Keep It.app'
+  auto_updates true
+  depends_on macos: ">= :high_sierra"
+
+  app "Keep It.app"
 
   zap trash: [
-               '~/Library/Containers/com.reinvented.Keep-It-Indexing',
-               '~/Library/Containers/com.reinvented.Keep-It-Metadata',
-               '~/Library/Containers/com.reinvented.Keep It',
-             ]
+    "~/Library/Containers/com.reinvented.Keep-It-Indexing",
+    "~/Library/Containers/com.reinvented.Keep-It-Metadata",
+    "~/Library/Containers/com.reinvented.Keep It",
+  ]
 end

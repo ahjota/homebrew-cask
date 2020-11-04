@@ -1,11 +1,12 @@
-cask 'psychopy' do
-  version '1.90.3'
-  sha256 '7e1dfac94c39bd2a8fa5489e5e856b73add5d23a1fd381ce0c60e2478e0f6b55'
+cask "psychopy" do
+  version "2020.2.5"
+  sha256 "0651a3c97d5f053e331ef586f6a65203771f8c8f15126a6d7405f7d7e402bdaf"
 
-  url "https://github.com/psychopy/psychopy/releases/download/#{version}/StandalonePsychoPy2_PY3-#{version}-MacOS.dmg"
-  appcast 'https://github.com/psychopy/psychopy/releases.atom'
-  name 'PsychoPy'
-  homepage 'https://github.com/psychopy/psychopy'
+  url "https://github.com/psychopy/psychopy/releases/download/#{version}/StandalonePsychoPy-#{version}-macOS.dmg"
+  appcast "https://github.com/psychopy/psychopy/releases.atom"
+  name "PsychoPy"
+  desc "For running psychology and neuroscience experiments"
+  homepage "https://github.com/psychopy/psychopy"
 
-  app 'PsychoPy2_PY3.app'
+  app "PsychoPy.app"
 end

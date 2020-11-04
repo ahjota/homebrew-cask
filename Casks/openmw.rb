@@ -1,12 +1,14 @@
-cask 'openmw' do
-  version '0.44.0'
-  sha256 '0c1f75c9831adb8722bcbf322d731c0422fb8b95aca117bc3fa852b7de9350eb'
+cask "openmw" do
+  version "0.46.0"
+  sha256 "9a123492f3017bff35e6a5bfe27ca55e3a4af406301d41ef255b53c4ded4cd63"
 
-  url "https://downloads.openmw.org/osx/OpenMW-#{version}.dmg"
-  appcast 'https://github.com/OpenMW/openmw/releases.atom'
-  name 'OpenMW'
-  homepage 'https://openmw.org/'
+  # github.com/ was verified as official when first introduced to the cask
+  url "https://github.com/OpenMW/openmw/releases/download/openmw-#{version}/OpenMW-#{version}.dmg"
+  appcast "https://github.com/OpenMW/openmw/releases.atom"
+  name "OpenMW"
+  desc "Open-source open-world RPG game engine that supports playing Morrowind"
+  homepage "https://openmw.org/"
 
-  app 'OpenMW.app'
-  app 'OpenMW-CS.app'
+  app "OpenMW.app"
+  app "OpenMW-CS.app"
 end

@@ -1,13 +1,15 @@
-cask 'espresso' do
-  version '5.2.1'
-  sha256 '2bb0d17e4c91bec5f17b997310b8ad01a27023c73b07e1c9405681ef2c82eccb'
+cask "espresso" do
+  version "5.4.1"
+  sha256 "c28b93b6728869d47d2c277839079c1a1bbd88497d9ae0649800a50f51776072"
 
-  url "https://espressoapp.com/updates/archives/Espresso-#{version}.zip"
-  appcast 'https://espressoapp.com/updates/'
-  name 'Espresso'
-  homepage 'https://espressoapp.com/'
+  # downloads.kangacode.com/ was verified as official when first introduced to the cask
+  url "https://downloads.kangacode.com/Espresso/Espresso_#{version}.zip"
+  appcast "https://espressoapp.com/updates/"
+  name "Espresso"
+  desc "Website editor focusing on flair and efficiency"
+  homepage "https://espressoapp.com/"
 
-  depends_on macos: '>= :sierra'
+  depends_on macos: ">= :sierra"
 
-  app 'Espresso.app'
+  app "Espresso.app"
 end

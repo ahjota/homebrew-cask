@@ -1,25 +1,25 @@
-cask 'now' do
-  version '3.10.4'
-  sha256 'c11bcf7dbe0eba445e468a3a03d7bc567adaee36f2fee606b337ff36b534eb8e'
+cask "now" do
+  version "5.1.0"
+  sha256 "9ccb5e20faa7560ec1bd01c9b1989dfee5897fb7de70cf42a05da49a9e088ab7"
 
-  # github.com/zeit/now-desktop was verified as official when first introduced to the cask
-  url "https://github.com/zeit/now-desktop/releases/download/#{version}/now-desktop-#{version}-mac.zip"
-  appcast 'https://github.com/zeit/now-desktop/releases.atom'
-  name 'Now'
-  homepage 'https://zeit.co/now'
+  # github.com/zeit/now-desktop/ was verified as official when first introduced to the cask
+  url "https://github.com/zeit/now-desktop/releases/download/#{version}/Now-#{version}-mac.zip"
+  appcast "https://github.com/zeit/now-desktop/releases.atom"
+  name "Now"
+  desc "Create deployments right from the tray menu"
+  homepage "https://zeit.co/now"
 
-  app 'Now.app'
+  app "Now.app"
 
-  uninstall delete:     '/usr/local/bin/now',
-            login_item: 'Now',
-            signal:     ['TERM', 'co.zeit.now']
+  uninstall delete: "/usr/local/bin/now",
+            signal: ["TERM", "co.zeit.now"]
 
   zap trash: [
-               '~/.now.json',
-               '~/Library/Application Support/Now',
-               '~/Library/Caches/co.zeit.now',
-               '~/Library/Caches/co.zeit.now.ShipIt',
-               '~/Library/Preferences/co.zeit.now.plist',
-               '~/Library/Preferences/co.zeit.now.helper.plist',
-             ]
+    "~/.now.json",
+    "~/Library/Application Support/Now",
+    "~/Library/Caches/co.zeit.now",
+    "~/Library/Caches/co.zeit.now.ShipIt",
+    "~/Library/Preferences/co.zeit.now.plist",
+    "~/Library/Preferences/co.zeit.now.helper.plist",
+  ]
 end

@@ -1,11 +1,12 @@
-cask 'file-juicer' do
-  version '4.67'
-  sha256 'f50f1538fcad459b331cfd73d8c633fdbd806f6f69e346592f1182b2eb0813b9'
+cask "file-juicer" do
+  version "4.88"
+  sha256 :no_check # required as upstream package is updated in-place
 
   url "https://echoone.com/filejuicer/FileJuicer-#{version}.zip"
-  appcast 'https://echoone.com/filejuicer/download'
-  name 'File Juicer'
-  homepage 'https://echoone.com/filejuicer/'
+  appcast "https://echoone.com/filejuicer/download"
+  name "File Juicer"
+  desc "Extract images from PDF, PowerPoint, Word, Excel and other Files"
+  homepage "https://echoone.com/filejuicer/"
 
-  app 'File Juicer.app'
+  app "File Juicer.app"
 end

@@ -1,30 +1,37 @@
-cask 'datadog-agent' do
-  version '6.1.2-1'
-  sha256 'e2399cc9ddbf9f2ffecd32b48698857d1fd23cd504bd3527f0bb73c94d83542f'
+cask "datadog-agent" do
+  version "7.22.0-1"
+  sha256 "ceb52c36924959c6dc88c75f7f403361937ced94efaf9bbf70fbdd895bb81e21"
 
-  # s3.amazonaws.com/dd-agent was verified as official when first introduced to the cask
+  # s3.amazonaws.com/dd-agent/ was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/dd-agent/datadog-agent-#{version}.dmg"
-  name 'Datadog Agent'
-  homepage 'https://www.datadoghq.com/'
+  appcast "https://s3.amazonaws.com/dd-agent/"
+  name "Datadog Agent"
+  desc "Monitoring and security across systems, apps, and services"
+  homepage "https://www.datadoghq.com/"
 
-  pkg "datadog-agent-#{version}.pkg"
+  installer manual: "datadog-agent-#{version}.pkg"
 
-  preflight do
-    require 'etc'
-    File.open('/tmp/datadog-install-user', 'w') { |f| f.write(Etc.getlogin) }
-  end
+  uninstall quit:      "com.datadoghq.agent",
+            launchctl: "com.datadoghq.agent",
+            pkgutil:   "com.datadoghq.agent",
+            delete:    [
+              "/Applications/Datadog Agent.app",
+              "/opt/datadog-agent",
+              "/usr/local/bin/datadog-agent",
+            ]
 
-  uninstall pkgutil: 'com.datadoghq.agent'
-
-  zap trash: '/opt/datadog-agent'
+  zap trash: [
+    "~/.datadog-agent",
+    "~/Library/LaunchAgents/com.datadoghq.agent.plist",
+  ]
 
   caveats <<~EOS
-    You will need to update /opt/datadog-agent/etc/datadog.conf and replace APIKEY with your api key
+    You will need to update /opt/datadog-agent/etc/datadog.yaml and replace APIKEY with your api key
 
     If you ever want to start/stop the Agent, please use the Datadog Agent App or datadog-agent command.
     It will start automatically at login, if you want to enable it at startup, run these commands:
 
-    sudo cp '/opt/datadog-agent/etc/com.datadoghq.agent.plist' /Library/LaunchDaemons
+    sudo cp '/opt/datadog-agent/etc/com.datadoghq.agent.plist.example' /Library/LaunchDaemons/com.datadoghq.agent.plist
     sudo launchctl load -w /Library/LaunchDaemons/com.datadoghq.agent.plist
   EOS
 end

@@ -1,10 +1,12 @@
-cask 'mesasqlite' do
-  version '4.2.3'
-  sha256 '010a4e43aba647cc79168e3fe2a290696ad68334a37308d06e2438147b1d9653'
+cask "mesasqlite" do
+  version "4.3.5"
+  sha256 "ae458d82235aabedb2e32f12e514f69b3c931ca8b1f63cf7d271e3243de8bc97"
 
   url "http://www.desertsandsoftware.com/DEMOS/MesaSQLite#{version.no_dots}.zip"
-  name 'MesaSQLite'
-  homepage 'http://www.desertsandsoftware.com/wordpress/?page_id=17'
+  appcast "http://www.desertsandsoftware.com/?page_id=99",
+          must_contain: version.no_dots
+  name "MesaSQLite"
+  homepage "http://www.desertsandsoftware.com/wordpress/?page_id=17"
 
-  app 'MesaSQLite.app'
+  app "MesaSQLite.app"
 end

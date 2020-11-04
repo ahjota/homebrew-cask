@@ -1,46 +1,27 @@
-cask 'wireshark-chmodbpf' do
-  version '2.6.3'
-  sha256 '5f919d58ba1286631f2a878d7ec5acf430680f57d3d630d76e096077b4494418'
+cask "wireshark-chmodbpf" do
+  version "3.4.0"
+  sha256 "b0a09d499de618de8f17a0456047dd3839b78c3a57e64b6caf5a55ae5c398d8a"
 
   url "https://www.wireshark.org/download/osx/Wireshark%20#{version}%20Intel%2064.dmg"
-  appcast 'https://www.wireshark.org/download/osx/'
-  name 'Wireshark-ChmodBPF'
-  homepage 'https://www.wireshark.org/'
+  appcast "https://www.wireshark.org/update/0/Wireshark/0.0.0/macOS/x86-64/en-US/stable.xml"
+  name "Wireshark-ChmodBPF"
+  homepage "https://www.wireshark.org/"
 
-  conflicts_with cask: 'wireshark'
-  depends_on macos: '>= :mountain_lion'
+  conflicts_with cask: "wireshark"
+  depends_on macos: ">= :sierra"
 
-  pkg "Wireshark #{version} Intel 64.pkg",
-      choices: [
-                 {
-                   'choiceIdentifier' => 'wireshark',
-                   'choiceAttribute'  => 'selected',
-                   'attributeSetting' => 0,
-                 },
-                 {
-                   'choiceIdentifier' => 'chmodbpf',
-                   'choiceAttribute'  => 'selected',
-                   'attributeSetting' => 1,
-                 },
-                 {
-                   'choiceIdentifier' => 'cli',
-                   'choiceAttribute'  => 'selected',
-                   'attributeSetting' => 0,
-                 },
-               ]
+  pkg "Install ChmodBPF.pkg"
 
   uninstall_preflight do
-    set_ownership '/Library/Application Support/Wireshark'
+    system_command "/usr/sbin/installer",
+                   args: [
+                     "-pkg", "#{staged_path}/Uninstall ChmodBPF.pkg",
+                     "-target", "/"
+                   ],
+                   sudo: true
   end
 
-  uninstall pkgutil:   'org.wireshark.ChmodBPF.pkg',
-            launchctl: 'org.wireshark.ChmodBPF',
-            script:    {
-                         executable:   '/usr/sbin/dseditgroup',
-                         args:         ['-o', 'delete', 'access_bpf'],
-                         must_succeed: false,
-                         sudo:         true,
-                       }
+  uninstall pkgutil: "org.wireshark.ChmodBPF.pkg"
 
   caveats do
     reboot

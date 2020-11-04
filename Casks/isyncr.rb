@@ -1,20 +1,20 @@
-cask 'isyncr' do
-  if MacOS.version <= :sierra
-    version '5.6.5'
-    sha256 '8cd6b1c96a902d8810e52aab6a980424370237617bfd3ff574367ff1ce8d4f4e'
+cask "isyncr" do
+  if MacOS.version <= :mojave
+    version "5.14.11"
+    sha256 "b234a1de565854fc9cdfefba9b2f05887e150ec01612bbfadaa0a0d95566034e"
   else
-    version '5.14.0'
-    sha256 '68e65554b12083c35b0180c6535cefcc7897c0aa4902848dcf706459ecfab3ad'
+    version "6.0.3"
+    sha256 "c7033eb946a6a6104a75cc5c182506f47a0399b54f3b4ce486e82a1c7d040154"
   end
 
-  url "http://www.jrtstudio.com/files/iSyncr%20Desktop%20#{version}.pkg"
-  name 'iSyncr Desktop'
-  homepage 'http://www.jrtstudio.com/iSyncr-iTunes-for-Android'
-
-  depends_on macos: '>= :mountain_lion'
+  url "https://www.jrtstudio.com/files/iSyncr%20Desktop%20#{version}.pkg"
+  appcast "https://www.jrtstudio.com/files/SlashiSyncr38.js"
+  name "iSyncr Desktop"
+  desc "Syncs iTunes to Android over a USB or WiFi connection"
+  homepage "https://www.jrtstudio.com/iSyncr-iTunes-for-Android"
 
   pkg "iSyncr Desktop #{version}.pkg"
 
-  uninstall pkgutil: 'com.jrtstudio.iSyncrDesktop',
-            quit:    'com.JRTStudio.iSyncrWiFi'
+  uninstall pkgutil: "com.jrtstudio.iSyncrDesktop",
+            quit:    "com.JRTStudio.iSyncrWiFi"
 end

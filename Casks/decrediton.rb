@@ -1,11 +1,11 @@
-cask 'decrediton' do
-  version '1.3.0'
-  sha256 '77753257c7ebaf1b3f77f0d6445d227dff20edd770702ee290140e42250b12aa'
+cask "decrediton" do
+  version "1.5.2"
+  sha256 "3341b0b09bf100840643daf5b583cd61ee8981b7869a5190cb4c106cacba8b7e"
 
   url "https://github.com/decred/decred-binaries/releases/download/v#{version}/decrediton-v#{version}.dmg"
-  appcast 'https://github.com/decred/decred-binaries/releases.atom'
-  name 'Decrediton'
-  homepage 'https://github.com/decred/decrediton'
+  appcast "https://github.com/decred/decred-binaries/releases.atom"
+  name "Decrediton"
+  homepage "https://github.com/decred/decrediton"
 
-  app 'decrediton.app'
+  app "decrediton.app"
 end

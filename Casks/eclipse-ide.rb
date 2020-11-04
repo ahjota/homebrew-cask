@@ -1,12 +1,10 @@
-cask 'eclipse-ide' do
-  version '4.8.0,photon:R'
-  sha256 '9aeb9ad57a359efb38b40ea1195873fbf6c8c5dd920ca9b079facf0f24b555fa'
+cask "eclipse-ide" do
+  version "4.17.0,2020-09:R"
+  sha256 "7a81d0fe2e4991a19e4c5163131e9d7c15da9625f590c1e11a71cce9af62cac7"
 
   url "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/#{version.after_comma.before_colon}/#{version.after_colon}/eclipse-committers-#{version.after_comma.before_colon}-#{version.after_colon}-macosx-cocoa-x86_64.dmg&r=1"
-  name 'Eclipse IDE for Eclipse Committers'
-  homepage 'https://eclipse.org/'
+  name "Eclipse IDE for Eclipse Committers"
+  homepage "https://eclipse.org/"
 
-  depends_on macos: '>= :leopard'
-
-  app 'Eclipse.app'
+  app "Eclipse.app"
 end

@@ -1,19 +1,23 @@
-cask 'paw' do
-  version '3.1.7-3001007002'
-  sha256 'c2ede505c1173cc0407e4c0a9f93469abae88d8170cd8b53ae93b23971b13b6f'
+cask "paw" do
+  version "3.2"
+  sha256 "d2ecc62da75260de539bc6ae3c14ebebfbc5e194ea2f385f6f48372d5eead4b1"
 
   url "https://cdn-builds.paw.cloud/paw/Paw-#{version}.zip"
-  appcast 'https://paw.cloud/api/v2/updates/appcast'
-  name 'Paw'
-  homepage 'https://paw.cloud/'
+  appcast "https://paw.cloud/api/v2/updates/appcast"
+  name "Paw"
+  desc "HTTP client that helps testing and describing APIs"
+  homepage "https://paw.cloud/"
 
-  app 'Paw.app'
+  auto_updates true
+  depends_on macos: ">= :sierra"
+
+  app "Paw.app"
 
   zap trash: [
-               '~/Library/Application Scripts/com.luckymarmot.Paw',
-               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.luckymarmot.paw.sfl*',
-               '~/Library/Containers/com.luckymarmot.Paw',
-               '~/Library/Preferences/com.luckymarmot.Paw.plist',
-               '~/Library/Saved Application State/com.luckymarmot.Paw.savedState',
-             ]
+    "~/Library/Application Scripts/com.luckymarmot.Paw",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.luckymarmot.paw.sfl*",
+    "~/Library/Containers/com.luckymarmot.Paw",
+    "~/Library/Preferences/com.luckymarmot.Paw.plist",
+    "~/Library/Saved Application State/com.luckymarmot.Paw.savedState",
+  ]
 end

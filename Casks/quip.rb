@@ -1,11 +1,15 @@
-cask 'quip' do
-  version '5.3.73'
-  sha256 '9da7f53f6495f62346a4427a0192e78bac6821671452063279d2a33b5c70b64f'
+cask "quip" do
+  version "7.23.1"
+  sha256 "59d460708f3936128ecd36198731dc7c55308570b1a4065ddb2a18b4d5d95d59"
 
-  # d2i1pl9gz4hwa7.cloudfront.net was verified as official when first introduced to the cask
-  url "https://d2i1pl9gz4hwa7.cloudfront.net/macosx_#{version}.dmg"
-  name 'Quip'
-  homepage 'https://quip.com/'
+  # quip-clients.com/ was verified as official when first introduced to the cask
+  url "https://quip-clients.com/macosx_#{version}.dmg"
+  appcast "https://api.quip.com/-/sparkle-feed?manual=0"
+  name "Quip"
+  desc "Tool for teams to create living documents"
+  homepage "https://quip.com/"
 
-  app 'Quip.app'
+  auto_updates true
+
+  app "Quip.app"
 end

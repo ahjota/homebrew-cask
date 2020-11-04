@@ -1,17 +1,20 @@
-cask 'ckb-next' do
-  version '0.3.1'
-  sha256 'd2f8ab5dfa9599f148a5a4988e5521e3ba7da16e5d9beaf8c820c59a1ea578b4'
+cask "ckb-next" do
+  version "0.4.2"
+  sha256 "2cb5cde9ed4514e85ec492af84c60692fe2f91495d788678a723396b083bbb52"
 
   url "https://github.com/ckb-next/ckb-next/releases/download/v#{version}/ckb-next_v#{version}.dmg"
-  appcast 'https://github.com/ckb-next/ckb-next/releases.atom'
-  name 'ckb-next'
-  homepage 'https://github.com/ckb-next/ckb-next'
+  appcast "https://github.com/ckb-next/ckb-next/releases.atom"
+  name "ckb-next"
+  desc "RGB driver"
+  homepage "https://github.com/ckb-next/ckb-next"
 
-  pkg 'ckb-next.mpkg'
+  depends_on macos: ">= :sierra"
+
+  pkg "ckb-next.mpkg"
 
   uninstall pkgutil:   [
-                         'org.ckb-next.ckb',
-                         'org.ckb-next.daemon',
-                       ],
-            launchctl: 'org.ckb-next.daemon'
+    "org.ckb-next.ckb",
+    "org.ckb-next.daemon",
+  ],
+            launchctl: "org.ckb-next.daemon"
 end

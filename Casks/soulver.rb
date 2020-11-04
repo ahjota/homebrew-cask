@@ -1,19 +1,21 @@
-cask 'soulver' do
-  version '2.6.8-5949'
-  sha256 '216110f8118783194fb80f30e7a63584308f6569e3ff3214d13026231130ab7a'
+cask "soulver" do
+  version "3.4.10-144"
+  sha256 "9f243ac76f3dc8a7c4a3cfa4ccbb7b4e5fe3663a79730a9aaed6f1ae2ea7fd4d"
 
-  url "http://www.acqualia.com/files/sparkle/soulver_#{version}.zip"
-  appcast "http://www.acqualia.com/soulver/appcast/soulver#{version.major}.xml"
-  name 'Soulver'
-  homepage 'http://www.acqualia.com/soulver/'
+  url "https://soulver.app/mac/sparkle/soulver-#{version}.zip"
+  appcast "https://soulver.app/mac/sparkle/appcast.xml"
+  name "Soulver"
+  desc "Notepad with a built-in calculator"
+  homepage "https://soulver.app/"
 
-  depends_on macos: '>= :yosemite'
+  auto_updates true
+  depends_on macos: ">= :mojave"
 
-  app 'Soulver.app'
+  app "Soulver #{version.major}.app"
 
   zap trash: [
-               '~/Library/Application Support/Soulver',
-               '~/Library/Preferences/com.acqualia.soulver.plist',
-               '~/Library/Autosave Information/Unsaved Soulver Document*',
-             ]
+    "~/Library/Application Support/Soulver 3",
+    "~/Library/Application Support/app.soulver.mac",
+    "~/Library/Preferences/app.soulver.mac.plist",
+  ]
 end

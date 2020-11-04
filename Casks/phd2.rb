@@ -1,10 +1,12 @@
-cask 'phd2' do
-  version '2.6.5'
-  sha256 '3679245f127b136523d6d28f921971974e304f95397e19ebc4718e1e5554f87d'
+cask "phd2" do
+  version "2.6.9"
+  sha256 "6c891a7251df226c9090012dc537e36e7fe03119079935fa4daca7d197ee197a"
 
-  url "https://openphdguiding.org/PHD2-#{version}-OSX.zip"
-  name 'PHD2'
-  homepage 'https://openphdguiding.org/'
+  url "https://openphdguiding.org/PHD2-#{version}-OSX-64.zip"
+  appcast "https://openphdguiding.org/changelog/"
+  name "PHD2"
+  desc "Telescope guiding software"
+  homepage "https://openphdguiding.org/"
 
-  app 'PHD2.app'
+  app "PHD2.app"
 end

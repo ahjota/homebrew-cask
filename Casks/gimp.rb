@@ -1,20 +1,24 @@
-cask 'gimp' do
-  version '2.10.6'
-  sha256 '52fe241b69d5353c546ffac008d89328fa3126d8f2557642c4661ba68e4ad6c8'
+cask "gimp" do
+  version "2.10.14"
+  sha256 "60631e39a1042c38cc281bc3213a76be109fb909b9671fb03c55cf5cf31ea632"
 
   url "https://download.gimp.org/pub/gimp/v#{version.major_minor}/osx/gimp-#{version}-x86_64.dmg"
-  name 'GIMP'
-  homepage 'https://www.gimp.org/'
+  appcast "https://download.gimp.org/pub/gimp/v#{version.major_minor}/osx/"
+  name "GIMP"
+  name "GNU Image Manipulation Program"
+  desc "Free and open-source image editor"
+  homepage "https://www.gimp.org/"
 
   app "GIMP-#{version.major_minor}.app"
+  binary "#{appdir}/GIMP-#{version.major_minor}.app/Contents/MacOS/gimp"
 
   postflight do
-    set_permissions "#{appdir}/GIMP-#{version.major_minor}.app/Contents/MacOS/gimp", 'a+rx'
+    set_permissions "#{appdir}/GIMP-#{version.major_minor}.app/Contents/MacOS/gimp", "a+rx"
   end
 
   zap trash: [
-               '~/Library/Preferences/org.gnome.gimp.plist',
-               '~/Library/Application Support/Gimp',
-               '~/Library/Saved Application State/org.gnome.gimp.savedState',
-             ]
+    "~/Library/Preferences/org.gimp.gimp-#{version.major_minor}:.plist",
+    "~/Library/Application Support/Gimp",
+    "~/Library/Saved Application State/org.gimp.gimp-#{version.major_minor}:.savedState",
+  ]
 end

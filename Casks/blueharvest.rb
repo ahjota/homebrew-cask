@@ -1,21 +1,23 @@
-cask 'blueharvest' do
-  version '7.0.7'
-  sha256 'cc0fe79c195547d31d5c0edfc7d5b326a83b11936d9d637742fd8db672adc84f'
+cask "blueharvest" do
+  version "8.0.4"
+  sha256 "24cba7a436a51c9249b8c1f5f660231915b1d74e53e558a9a8a693b9ba3e54ab"
 
-  url "http://zeroonetwenty.com/downloads/BlueHarvest#{version.no_dots}.dmg"
-  appcast 'https://cp37.ezyreg.com/~zeroonet/downloads/versioninfo/sparkle/blueharvest6.xml'
-  name 'BlueHarvest'
-  homepage 'http://zeroonetwenty.com/blueharvest/'
+  url "https://zeroonetwenty.com/blueharvest/downloads/BlueHarvest#{version.no_dots}.dmg"
+  appcast "https://zeroonetwenty.com/blueharvest/release-notes.html",
+          must_contain: "#{version.no_dots}.dmg"
+  name "BlueHarvest"
+  homepage "https://zeroonetwenty.com/blueharvest/"
 
-  app 'BlueHarvest.app'
+  depends_on macos: ">= :catalina"
 
-  uninstall delete:     "/Library/PrivilegedHelperTools/com.zeroonetwenty.BlueHarvestHelper#{version.major}",
-            launchctl:  "com.zeroonetwenty.BlueHarvestHelper#{version.major}",
-            login_item: 'BlueHarvest',
-            quit:       'com.zeroonetwenty.BlueHarvest5'
+  app "BlueHarvest.app"
+
+  uninstall delete:    "/Library/PrivilegedHelperTools/com.zeroonetwenty.BlueHarvestHelper#{version.major}",
+            launchctl: "com.zeroonetwenty.BlueHarvestHelper#{version.major}",
+            quit:      "com.zeroonetwenty.BlueHarvest5"
 
   zap trash: [
-               '~/Library/Caches/com.zeroonetwenty.BlueHarvest5',
-               '~/Library/Preferences/com.zeroonetwenty.BlueHarvest5.plist',
-             ]
+    "~/Library/Caches/com.zeroonetwenty.BlueHarvest5",
+    "~/Library/Preferences/com.zeroonetwenty.BlueHarvest5.plist",
+  ]
 end

@@ -1,12 +1,12 @@
-cask 'doomsday-engine' do
-  version '2.0.3'
-  sha256 '0a6258ed1c061b3a80f1573c7845bce39cd8c8d66ade8d3f29531b7cc658e9d5'
+cask "doomsday-engine" do
+  version "2.2.2"
+  sha256 "da2d59a5f548bfa686a55e418c1b342997aded307e3f60bfcc20ca39344b529a"
 
-  url "http://files.dengine.net/archive/doomsday_#{version}_x86_64.dmg"
-  appcast 'http://api.dengine.net/1/builds/feed'
-  name 'Doomsday Engine'
-  homepage 'https://dengine.net/'
+  url "https://files.dengine.net/archive/doomsday_#{version}_x86_64.dmg"
+  appcast "http://api.dengine.net/1/builds/feed"
+  name "Doomsday Engine"
+  homepage "https://dengine.net/"
 
-  app 'Doomsday.app'
-  app 'Doomsday Shell.app'
+  app "Doomsday.app"
+  app "Doomsday Shell.app"
 end

@@ -1,12 +1,14 @@
-cask 'polycom-realpresence' do
-  version '3.9.0.69879'
-  sha256 '8b2e42522d79c438d0067cdfa8a99743fca98e1e5c759d74565ead4ff9d34265'
+cask "polycom-realpresence" do
+  version "3.10.4.72927"
+  sha256 "5945aded85e88325b4e7930aaaa30b7371188190da61d4d55e682646db2018b2"
 
-  url "https://downloads.polycom.com/video/realpresence_desktop/RPDMac_#{version.dots_to_underscores}.dmg"
-  name 'Polycom RealPresence Desktop'
-  homepage 'http://www.polycom.com/products-services/hd-telepresence-video-conferencing/realpresence-desktop/realpresence-desktop.html'
+  url "https://downloads.polycom.com/video/realpresence_desktop/RPDesktop_#{version.dots_to_underscores}.dmg"
+  appcast "https://support.polycom.com/content/support/north-america/usa/en/support/video/realpresence-desktop/realpresence-desktop.html",
+          must_contain: version.dots_to_underscores
+  name "Polycom RealPresence Desktop"
+  homepage "https://www.polycom.com/products-services/hd-telepresence-video-conferencing/realpresence-desktop/realpresence-desktop.html"
 
-  pkg 'RealPresenceDesktop.pkg'
+  pkg "RealPresenceDesktop.pkg"
 
-  uninstall pkgutil: 'com.polycom.RealPresenceDesktop'
+  uninstall pkgutil: "com.polycom.RealPresenceDesktop"
 end

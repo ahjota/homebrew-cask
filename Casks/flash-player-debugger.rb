@@ -1,18 +1,28 @@
-cask 'flash-player-debugger' do
-  version '31.0.0.108'
-  sha256 'bad3571cc412bfb7c32a745867a78061ad844df89fb4332a42910d9bc7137f36'
+cask "flash-player-debugger" do
+  version "32.0.0.445"
+  sha256 "88a09191da28c841f84d33c504aa6b9ddd7ba25417200750ae0249cf52b3f260"
 
-  # macromedia.com was verified as official when first introduced to the cask
-  url "https://fpdownload.macromedia.com/pub/flashplayer/updaters/#{version.major}/flashplayer_#{version.major}_sa_debug.dmg"
-  appcast 'http://fpdownload2.macromedia.com/get/flashplayer/update/current/xml/version_en_mac_pep.xml'
-  name 'Adobe Flash Player projector content debugger'
-  homepage 'https://www.adobe.com/support/flashplayer/debug_downloads.html'
+  url "https://fpdownload.adobe.com/pub/flashplayer/updaters/#{version.major}/flashplayer_#{version.major}_sa_debug.dmg"
+  appcast "https://www.adobe.com/support/flashplayer/debug_downloads.html"
+  name "Adobe Flash Player projector content debugger"
+  desc "Debugger for Adobe Flash player"
+  homepage "https://www.adobe.com/support/flashplayer/debug_downloads.html"
 
   # Renamed to avoid conflict with flash-player.
-  app 'Flash Player.app', target: 'Flash Player Debugger.app'
+  app "Flash Player.app", target: "Flash Player Debugger.app"
+
+  uninstall pkgutil:   "com.adobe.pkg.PepperFlashPlayer",
+            launchctl: "com.adobe.fpsaud",
+            delete:    [
+              "/Library/Application Support/Adobe/Flash Player Install Manager",
+              "/Library/Internet Plug-Ins/PepperFlashPlayer",
+            ]
 
   zap trash: [
-               '~/Library/Caches/Adobe/Flash Player',
-               '~/Library/Logs/FlashPlayerInstallManager.log',
-             ]
+    "/Library/Internet Plug-Ins/flashplayer.xpt",
+    "~/Library/Caches/Adobe/Flash Player",
+    "~/Library/Logs/FlashPlayerInstallManager.log",
+    "~/Library/Preferences/Macromedia/Flash Player",
+    "~/Library/Saved Application State/com.adobe.flashplayer.installmanager.savedState",
+  ]
 end

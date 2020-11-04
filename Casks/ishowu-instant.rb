@@ -1,10 +1,13 @@
-cask 'ishowu-instant' do
-  version :latest
-  sha256 :no_check
+cask "ishowu-instant" do
+  version "1.4.0"
+  sha256 "eaa255cd315bb81323da017ec166850f0b08510c257808997eae1a077e6c6dd5"
 
-  url 'https://www.shinywhitebox.com/store/file.php?p=14'
-  name 'iShowU Instant'
-  homepage 'https://www.shinywhitebox.com/ishowu-instant'
+  url "https://www.shinywhitebox.com/downloads/instant/iShowU_Instant_#{version}.dmg"
+  appcast "https://www.shinywhitebox.com/store/appcast.php?p=14"
+  name "iShowU Instant"
+  homepage "https://www.shinywhitebox.com/ishowu-instant"
 
-  app 'iShowU Instant.app'
+  depends_on macos: ">= :mojave"
+
+  app "iShowU Instant.app"
 end

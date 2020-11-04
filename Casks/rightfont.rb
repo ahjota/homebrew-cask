@@ -1,13 +1,15 @@
-cask 'rightfont' do
-  version '4.10'
-  sha256 '9ff22c538b96cc928dca659abc63158be5f8b156c6fdef776392c0cbd6e2ab84'
+cask "rightfont" do
+  version "5.9.0"
+  sha256 "17539732acb77bfa7c156175b82f33f4a02e8ceb15784442752d93e10722d0f1"
 
-  url "https://rightfontapp.com/downloads/#{version}/rightfont.zip"
-  appcast 'https://rightfontapp.com/update/appcast.xml'
-  name 'RightFont'
-  homepage 'https://rightfontapp.com/'
+  url "https://rightfontapp.com/update/rightfont.zip"
+  appcast "https://rightfontapp.com/update/appcast#{version.major}.xml"
+  name "RightFont"
+  desc "Font manager that helps preview, install, sync and manage fonts"
+  homepage "https://rightfontapp.com/"
 
-  depends_on macos: '>= :yosemite'
+  auto_updates true
+  depends_on macos: ">= :yosemite"
 
-  app 'RightFont.app'
+  app "RightFont #{version.major}.app"
 end

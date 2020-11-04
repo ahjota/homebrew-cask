@@ -1,11 +1,14 @@
-cask 'moneymoney' do
-  version '2.3.7'
-  sha256 'aed6e69a2721301f3c849ff9f70c8c52d5e15716792a21446e822206483633fc'
+cask "moneymoney" do
+  version "2.3.35"
+  sha256 "f73091d8db53910d30a67f3552a9e6c0bbe6b7151c7e96d98f74b10b4a1aced4"
 
-  url 'https://service.moneymoney-app.com/1/MoneyMoney.zip'
-  appcast 'https://service.moneymoney-app.com/1/Appcast.xml'
-  name 'MoneyMoney'
-  homepage 'https://moneymoney-app.com/'
+  url "https://service.moneymoney-app.com/1/MoneyMoney.zip"
+  appcast "https://service.moneymoney-app.com/1/Appcast.xml"
+  name "MoneyMoney"
+  desc "German banking and financial management software"
+  homepage "https://moneymoney-app.com/"
 
-  app 'MoneyMoney.app'
+  auto_updates true
+
+  app "MoneyMoney.app"
 end

@@ -1,14 +1,15 @@
-cask 'tableflip' do
-  version '1.1.8'
-  sha256 '0e1e735c90c36ea7e595a915ad974975879785dc79383e0386f866ceb67a5bef'
+cask "tableflip" do
+  version "1.2.3"
+  sha256 "c6314c37dd1ceabf8de4755e3d0d545916e439b7b6b16ba3c67d9d6c65ab71b7"
 
-  # s3.amazonaws.com/tableflip was verified as official when first introduced to the cask
-  url "https://s3.amazonaws.com/tableflip/TableFlip-v#{version}.zip"
+  # update.christiantietze.de/tableflip/ was verified as official when first introduced to the cask
+  url "https://update.christiantietze.de/tableflip/v#{version.major}/TableFlip-v#{version}.zip"
   appcast "https://update.christiantietze.de/tableflip/v#{version.major}/release.xml"
-  name 'TableFlip'
-  homepage 'https://tableflipapp.com/'
+  name "TableFlip"
+  desc "App to edit markdown files in place"
+  homepage "https://tableflipapp.com/"
 
   auto_updates true
 
-  app 'TableFlip.app'
+  app "TableFlip.app"
 end

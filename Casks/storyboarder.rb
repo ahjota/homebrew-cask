@@ -1,19 +1,20 @@
-cask 'storyboarder' do
-  version '1.7.0'
-  sha256 'f9bf075aee8369a461731522a84fc3043fc6a5113c4422581d4e6ccd1de7690e'
+cask "storyboarder" do
+  version "2.1.0"
+  sha256 "b9d97b75b4c9eca0c9e6b60148bd43b02534f2d2e27f36886028b3bed495cc38"
 
-  # github.com/wonderunit/storyboarder was verified as official when first introduced to the cask
-  url "https://github.com/wonderunit/storyboarder/releases/download/v#{version}/storyboarder-#{version}-mac.zip"
-  appcast 'https://github.com/wonderunit/storyboarder/releases.atom'
-  name 'Wonder Unit Storyboarder'
-  homepage 'https://wonderunit.com/storyboarder/'
+  # github.com/wonderunit/storyboarder/ was verified as official when first introduced to the cask
+  url "https://github.com/wonderunit/storyboarder/releases/download/v#{version}/Storyboarder-#{version}.dmg"
+  appcast "https://github.com/wonderunit/storyboarder/releases.atom"
+  name "Wonder Unit Storyboarder"
+  desc "Visualize a story as fast you can draw stick figures"
+  homepage "https://wonderunit.com/storyboarder/"
 
-  app 'Storyboarder.app'
+  app "Storyboarder.app"
 
   zap trash: [
-               '~/Library/Application Support/Storyboarder',
-               '~/Library/Preferences/com.wonderunit.storyboarder.helper.plist',
-               '~/Library/Preferences/com.wonderunit.storyboarder.plist',
-               '~/Library/Saved Application State/com.wonderunit.storyboarder.savedState',
-             ]
+    "~/Library/Application Support/Storyboarder",
+    "~/Library/Preferences/com.wonderunit.storyboarder.helper.plist",
+    "~/Library/Preferences/com.wonderunit.storyboarder.plist",
+    "~/Library/Saved Application State/com.wonderunit.storyboarder.savedState",
+  ]
 end

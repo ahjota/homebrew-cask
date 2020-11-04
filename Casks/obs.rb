@@ -1,25 +1,20 @@
-cask 'obs' do
-  version '22.0.3'
-  sha256 '4e39f601aeea8f949d3570e3052cbaa919a43060fa1beeaee0da6ce6c7aa2b24'
+cask "obs" do
+  version "26.0.2"
+  sha256 "66855df67a829c8bf1b5e5f7321556e7f9e338f8a95e51ca6afcee349d206ac2"
 
-  url "https://cdn-fastly.obsproject.com/downloads/obs-mac-#{version}-installer.pkg"
-  appcast 'https://github.com/obsproject/obs-studio/releases.atom'
-  name 'OBS'
-  homepage 'https://obsproject.com/'
+  url "https://cdn-fastly.obsproject.com/downloads/obs-mac-#{version}.dmg"
+  appcast "https://github.com/obsproject/obs-studio/releases.atom"
+  name "OBS"
+  desc "Open-source software for live streaming and screen recording"
+  homepage "https://obsproject.com/"
 
-  pkg "obs-mac-#{version}-installer.pkg"
+  auto_updates true
 
-  uninstall pkgutil: [
-                       'org.obsproject.pkg.obs-studio',
-                       'zakk.lol.SyphonInject',
-                     ]
+  app "OBS.app"
 
   zap trash: [
-               '/Library/Application Support/obs-studio',
-               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.obsproject.obs-studio.sfl*',
-               '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/zakk.lol.syphoninject.sfl*',
-               '~/Library/Application Support/obs-studio',
-               '/private/var/db/receipts/zakk.lol.SyphonInject.bom',
-               '/private/var/db/receipts/zakk.lol.SyphonInject.plist',
-             ]
+    "~/Library/Application Support/obs-studio",
+    "~/Library/Preferences/com.obsproject.obs-studio.plist",
+    "~/Library/Saved Application State/com.obsproject.obs-studio.savedState",
+  ]
 end

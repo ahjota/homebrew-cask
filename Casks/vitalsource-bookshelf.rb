@@ -1,13 +1,14 @@
-cask 'vitalsource-bookshelf' do
-  version '8.0'
-  sha256 '954a6152a74ca9b86b70c1a30ead067a706721b6b833dfb7e5d49569e68b9086'
+cask "vitalsource-bookshelf" do
+  version "9.3.0.1259"
+  sha256 "bc005fc51fc48d0b4d642eba1d79c817e22babc556b7247db4040ba1eb98c511"
 
-  # downloads.vitalbook.com/vsti/bookshelf was verified as official when first introduced to the cask
-  url "https://downloads.vitalbook.com/vsti/bookshelf/#{version}/MAC/Bookshelf/VitalSource-Bookshelf.dmg"
-  name 'VitalSource Bookshelf'
-  homepage 'https://www.vitalsource.com/bookshelf-features'
+  # downloads.vitalbook.com/ was verified as official when first introduced to the cask
+  url "https://downloads.vitalbook.com/vsti/bookshelf/#{version.major_minor}/mac/bookshelf/VitalSource-Bookshelf_#{version}.dmg"
+  appcast "https://support.vitalsource.com/hc/en-us/articles/360014107913-Mac"
+  name "VitalSource Bookshelf"
+  homepage "https://www.vitalsource.com/bookshelf-features"
 
-  depends_on macos: '>= :yosemite'
+  depends_on macos: ">= :sierra"
 
-  app 'VitalSource Bookshelf.app'
+  app "VitalSource Bookshelf.app"
 end

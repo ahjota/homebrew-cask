@@ -1,19 +1,15 @@
-cask 'rar' do
-  version '5.6.0'
-  sha256 '381ca05ca2701cf72148da49d36a4dda4e8e29cd0c3879f697b2861326277d5d'
+cask "rar" do
+  version "5.9.1"
+  sha256 "65cef7ada7728819de9dddde41fb0180ef2b3f7a40525638894e9a3fdb13f570"
 
   url "https://www.rarlab.com/rar/rarosx-#{version}.tar.gz"
-  name 'RAR Archiver'
-  homepage 'https://www.rarlab.com/'
+  name "RAR Archiver"
+  homepage "https://www.rarlab.com/"
 
-  binary 'rar/rar'
-  binary 'rar/unrar'
-  artifact 'rar/default.sfx', target: "#{HOMEBREW_PREFIX}/lib/default.sfx"
-  artifact 'rar/rarfiles.lst', target: "#{HOMEBREW_PREFIX}/etc/rarfiles.lst"
+  conflicts_with formula: "unrar"
 
-  caveats <<~EOS
-    Instructions on using rar and unrar are available in
-
-      #{staged_path}/rar/rar.txt
-  EOS
+  binary "rar/rar"
+  binary "rar/unrar"
+  artifact "rar/default.sfx", target: "#{HOMEBREW_PREFIX}/lib/default.sfx"
+  artifact "rar/rarfiles.lst", target: "#{HOMEBREW_PREFIX}/etc/rarfiles.lst"
 end

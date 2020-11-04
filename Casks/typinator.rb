@@ -1,14 +1,13 @@
-cask 'typinator' do
-  version '7.7'
-  sha256 'd5ed77655a728b25011a634c5f5b06fd120a27cba7d5c1742ea2d5e7d653203a'
+cask "typinator" do
+  version "8.5"
+  sha256 "670df1830fa7893baf892e37008741c54c46d3e9e989d6933ac030352207342f"
 
-  url "http://www.ergonis.com/downloads/products/typinator/Typinator#{version.no_dots}-Install.dmg",
+  url "https://www.ergonis.com/downloads/products/typinator/Typinator#{version.no_dots}-Install.dmg",
       user_agent: :fake
-  appcast 'http://www.ergonis.com/products/typinator/history.html'
-  name 'Typinator'
-  homepage 'http://www.ergonis.com/'
+  appcast "https://update.ergonis.com/vck/typinator.xml"
+  name "Typinator"
+  desc "Tool to automate the insertion of frequently used text and graphics"
+  homepage "https://www.ergonis.com/"
 
-  accessibility_access true
-
-  app 'Typinator.app'
+  app "Typinator.app"
 end

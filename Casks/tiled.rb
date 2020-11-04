@@ -1,12 +1,15 @@
-cask 'tiled' do
-  version '1.1.6'
-  sha256 '3ca705f3c39d96c597b128201d24a66c1ebbfbc2aae2c1facad8a5f018ab944e'
+cask "tiled" do
+  version "1.4.2"
+  sha256 "7ae7d8816e88f2bbc0e6afac51b47b6beb41399d3e0e17ace3cfca3b9de16691"
 
-  # github.com/bjorn/tiled was verified as official when first introduced to the cask
+  # github.com/bjorn/tiled/ was verified as official when first introduced to the cask
   url "https://github.com/bjorn/tiled/releases/download/v#{version}/Tiled-#{version}-macos.zip"
-  appcast 'https://github.com/bjorn/tiled/releases.atom'
-  name 'Tiled'
-  homepage 'http://www.mapeditor.org/'
+  appcast "https://github.com/bjorn/tiled/releases.atom"
+  name "Tiled"
+  desc "Flexible level editor"
+  homepage "https://www.mapeditor.org/"
 
-  app 'Tiled.app'
+  depends_on macos: ">= :sierra"
+
+  app "Tiled.app"
 end

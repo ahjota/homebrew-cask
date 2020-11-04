@@ -1,11 +1,11 @@
-cask 'macbreakz' do
-  version '5.32'
-  sha256 '217bc617625b3e56da23c6f9d4e553d5f0cb8ffe3bc402be1f6efbbef6825089'
+cask "macbreakz" do
+  version "5.40"
+  sha256 "4c0aeb1368fe5dae8a17991e1397f3917e21d6601b7d837526af880f4077ce3b"
 
-  url "http://www.publicspace.net/download/MacBreakZ#{version.major}.dmg"
-  appcast "http://www.publicspace.net/app/signed_mb#{version.major}.xml"
-  name 'MacBreakZ'
-  homepage 'http://www.publicspace.net/MacBreakZ/'
+  url "https://www.publicspace.net/download/MacBreakZ#{version.major}.dmg"
+  appcast "https://www.publicspace.net/app/signed_mb#{version.major}.xml"
+  name "MacBreakZ"
+  homepage "https://www.publicspace.net/MacBreakZ/"
 
   app "MacBreakZ #{version.major}.app"
 end
